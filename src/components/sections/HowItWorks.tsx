@@ -19,7 +19,7 @@ export function HowItWorks({ content }: { content: HowItWorksContent }) {
         <ol className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {content.steps.map((step, i) => (
             <Reveal as="li" key={step.title} index={i} from="left" distance={20}>
-              <Card className="h-full p-7">
+              <Card interactive className="h-full p-7">
                 <span className="bg-blue font-display flex size-10 items-center justify-center rounded-[11px] text-[15px] font-extrabold text-white">
                   {i + 1}
                 </span>

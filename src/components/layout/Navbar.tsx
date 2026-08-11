@@ -6,9 +6,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { ButtonLink, Container } from "@/components/ui";
 import { LanguageSwitch } from "./LanguageSwitch";
+import { ScrollProgress } from "@/components/motion/ScrollProgress";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import { useScrolled } from "@/hooks/useScrolled";
 import { useScrollLock } from "@/hooks/useScrollLock";
 import { SECTION_IDS } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 import type { Locale } from "@/lib/i18n";
 import type { NavLink } from "@/types/content";
 
@@ -21,6 +24,7 @@ interface NavbarProps {
 export function Navbar({ links, cta, locale = "de" }: NavbarProps) {
   const [open, setOpen] = useState(false);
   const reduced = usePrefersReducedMotion();
+  const scrolled = useScrolled();
   useScrollLock(open);
 
   // Close on Escape — expected behaviour for any overlay.
@@ -32,7 +36,13 @@ export function Navbar({ links, cta, locale = "de" }: NavbarProps) {
   }, [open]);
 
   return (
-    <header className="border-line sticky top-0 z-50 border-b bg-white/95 backdrop-blur">
+    <header
+      className={cn(
+        "border-line sticky top-0 z-50 border-b bg-white/95 backdrop-blur transition-shadow duration-300",
+        scrolled && "shadow-[0_6px_24px_rgba(15,42,71,0.07)]",
+      )}
+    >
+      <ScrollProgress />
       <Container width="narrow" className="flex h-[68px] items-center">
         <a href={`#${SECTION_IDS.hero}`} className="shrink-0" aria-label="Bildungs Guard – Startseite">
           <Image
@@ -51,7 +61,7 @@ export function Navbar({ links, cta, locale = "de" }: NavbarProps) {
               <li key={link.label}>
                 <a
                   href={link.href}
-                  className="text-ink hover:text-blue text-sm font-semibold transition-colors"
+                  className="text-ink hover:text-blue after:bg-blue relative text-sm font-semibold transition-colors after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:transition-transform after:duration-200 hover:after:scale-x-100 motion-reduce:after:transition-none"
                 >
                   {link.label}
                 </a>

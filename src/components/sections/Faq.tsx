@@ -36,10 +36,12 @@ export function Faq({ content }: { content: FaqContent }) {
             <StaggerItem key={item.question}>
               <details
                 open={item.defaultOpen}
-                className="border-line group rounded-xl border bg-white px-6 py-5 shadow-[0_1px_2px_rgba(15,42,71,0.04)]"
+                className="border-line group hover:border-blue/30 rounded-xl border bg-white px-6 py-5 shadow-[0_1px_2px_rgba(15,42,71,0.04)] transition-colors duration-200"
               >
                 <summary className="flex cursor-pointer list-none items-start justify-between gap-6 [&::-webkit-details-marker]:hidden">
-                  <span className="text-navy text-base leading-6 font-bold">{item.question}</span>
+                  <span className="text-navy group-hover:text-blue text-base leading-6 font-bold transition-colors">
+                    {item.question}
+                  </span>
                   <Plus aria-hidden className="text-blue mt-0.5 size-5 shrink-0 group-open:hidden" />
                   <Minus aria-hidden className="text-blue mt-0.5 hidden size-5 shrink-0 group-open:block" />
                 </summary>

@@ -36,7 +36,7 @@ export function Insights({ content }: { content: InsightsContent }) {
         <Stagger as="ul" className="mt-11 grid gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-13" stagger={0.09}>
           {content.items.map((article) => (
             <HoverLift as="li" key={article.title}>
-              <Card as="article" className="h-full p-7">
+              <Card interactive as="article" className="h-full p-7">
                 <span
                   className={cn(
                     "inline-block rounded-full px-3 py-1.5 text-xs font-bold",

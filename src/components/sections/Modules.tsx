@@ -24,7 +24,7 @@ export function Modules({ content }: { content: ModulesContent }) {
         <Stagger as="ul" className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3" stagger={0.06}>
           {content.items.map((module) => (
             <StaggerItem as="li" key={module.code} effect="pop">
-              <Card className="h-full p-7">
+              <Card interactive className="h-full p-7">
                 <span
                   className={cn(
                     "font-display flex size-10 items-center justify-center rounded-[11px] text-[15px] font-extrabold",
