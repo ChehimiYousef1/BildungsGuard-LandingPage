@@ -1,26 +1,74 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ---------------------------------------------------------------------------
+   BildungsGuard design tokens.
+   Measured from the approved Figma export. Components must only use these —
+   no raw hex values, no arbitrary sizes.
+   --------------------------------------------------------------------------- */
+@theme {
+  /* Brand */
+  --color-navy: #0f2a47;
+  --color-blue: #2563eb;
+  --color-blue-dark: #1d4fd8;
+  --color-teal: #0ea5a4;
+  --color-teal-soft: #e4f6f5;
+  --color-teal-ink: #0e9e9c;
+  --color-success: #16a34a;
+  --color-gold: #f5b301;
+
+  /* Neutrals */
+  --color-ink: #12283f;
+  --color-body: #5b6b7b;
+  --color-muted: #94a2b3;
+  --color-surface: #f6f9fc;
+  --color-line: #e3eaf1;
+
+  /* Dark band (CTA + footer) */
+  --color-navy-soft: #16324f;
+  --color-navy-line: #2c4967;
+  --color-navy-body: #a9bcd0;
+  --color-navy-muted: #8da3bc;
+
+  /* Radii */
+  --radius-button: 12px;
+  --radius-card: 16px;
+  --radius-frame: 14px;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    font-family: var(--font-body);
+    color: var(--color-body);
+    background: #fff;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-navy);
+    letter-spacing: -0.02em;
+  }
+
+  /* Visible focus ring everywhere — never remove without a replacement. */
+  :focus-visible {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 2px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
