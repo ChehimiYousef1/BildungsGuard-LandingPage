@@ -4,7 +4,6 @@ export { Button, ButtonLink } from "./Button";
 export { Card } from "./Card";
 export { CheckList } from "./CheckList";
 export { Container } from "./Container";
-export { Reveal } from "./Reveal";
 export { ScreenshotFrame } from "./ScreenshotFrame";
 export { Section } from "./Section";
 export { SectionHeading } from "./SectionHeading";

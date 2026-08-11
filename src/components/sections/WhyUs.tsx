@@ -1,4 +1,5 @@
 import { Container, Section, SectionHeading } from "@/components/ui";
+import { DrawRule, Stagger, StaggerItem } from "@/components/motion";
 import { SECTION_IDS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import type { WhyContent } from "@/types/content";
@@ -20,15 +21,16 @@ export function WhyUs({ content }: { content: WhyContent }) {
           description={content.body}
         />
 
-        <ul className="mt-14 grid gap-10 md:grid-cols-3 lg:gap-13">
+        {/* Signature moment: each accent rule draws before its text. */}
+        <Stagger as="ul" className="mt-14 grid gap-10 md:grid-cols-3 lg:gap-13" stagger={0.12}>
           {content.pillars.map((pillar) => (
-            <li key={pillar.title}>
-              <span aria-hidden className={cn("block h-[3px] rounded-sm", accents[pillar.accent])} />
+            <StaggerItem as="li" key={pillar.title}>
+              <DrawRule className={cn(accents[pillar.accent])} />
               <h3 className="mt-6 text-xl font-bold">{pillar.title}</h3>
               <p className="mt-3.5 text-[15px] leading-[25px]">{pillar.description}</p>
-            </li>
+            </StaggerItem>
           ))}
-        </ul>
+        </Stagger>
       </Container>
     </Section>
   );

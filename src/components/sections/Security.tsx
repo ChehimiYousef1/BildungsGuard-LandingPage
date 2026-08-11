@@ -1,5 +1,6 @@
 import { ShieldCheck } from "lucide-react";
-import { Badge, Card, Container, Reveal, Section, SectionHeading } from "@/components/ui";
+import { Badge, Card, Container, Section, SectionHeading } from "@/components/ui";
+import { Reveal } from "@/components/motion";
 import { SECTION_IDS } from "@/lib/constants";
 import type { SecurityContent } from "@/types/content";
 
@@ -17,7 +18,13 @@ export function Security({ content }: { content: SecurityContent }) {
 
         <ul className="mt-12 grid gap-6 md:grid-cols-2">
           {content.items.map((item, i) => (
-            <Reveal as="li" key={item.title} index={i % 2}>
+            <Reveal
+              as="li"
+              key={item.title}
+              index={i % 2}
+              from={i % 2 === 0 ? "left" : "right"}
+              distance={24}
+            >
               <Card className="flex h-full gap-5 p-7">
                 <span className="bg-teal-soft flex size-10 shrink-0 items-center justify-center rounded-[11px]">
                   <ShieldCheck aria-hidden className="text-teal-ink size-5" />

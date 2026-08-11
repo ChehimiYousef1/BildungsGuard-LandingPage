@@ -1,4 +1,5 @@
-import { Card, Container, Reveal, Section } from "@/components/ui";
+import { Card, Container, Section } from "@/components/ui";
+import { Stagger, StaggerItem } from "@/components/motion";
 import { SECTION_IDS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import type { ModulesContent } from "@/types/content";
@@ -19,9 +20,10 @@ export function Modules({ content }: { content: ModulesContent }) {
           <p className="mx-auto mt-4 max-w-[640px] text-base leading-[26px]">{content.body}</p>
         </div>
 
-        <ul className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {content.items.map((module, i) => (
-            <Reveal as="li" key={module.code} index={i % 3}>
+        {/* Signature moment: the grid springs in on a diagonal. */}
+        <Stagger as="ul" className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3" stagger={0.06}>
+          {content.items.map((module) => (
+            <StaggerItem as="li" key={module.code} effect="pop">
               <Card className="h-full p-7">
                 <span
                   className={cn(
@@ -35,9 +37,9 @@ export function Modules({ content }: { content: ModulesContent }) {
                 <h3 className="mt-5 text-lg leading-6 font-bold">{module.title}</h3>
                 <p className="mt-3 text-sm leading-6">{module.description}</p>
               </Card>
-            </Reveal>
+            </StaggerItem>
           ))}
-        </ul>
+        </Stagger>
       </Container>
     </Section>
   );

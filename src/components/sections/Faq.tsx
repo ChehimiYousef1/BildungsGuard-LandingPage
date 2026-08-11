@@ -1,5 +1,6 @@
 import { Minus, Plus } from "lucide-react";
 import { Container, Section } from "@/components/ui";
+import { Stagger, StaggerItem } from "@/components/motion";
 import { SECTION_IDS } from "@/lib/constants";
 import type { FaqContent } from "@/types/content";
 
@@ -30,22 +31,23 @@ export function Faq({ content }: { content: FaqContent }) {
           </h2>
         </div>
 
-        <div className="mt-11 space-y-3">
+        <Stagger className="mt-11 space-y-3" stagger={0.05}>
           {content.items.map((item) => (
-            <details
-              key={item.question}
-              open={item.defaultOpen}
-              className="border-line group rounded-xl border bg-white px-6 py-5 shadow-[0_1px_2px_rgba(15,42,71,0.04)]"
-            >
-              <summary className="flex cursor-pointer list-none items-start justify-between gap-6 [&::-webkit-details-marker]:hidden">
-                <span className="text-navy text-base leading-6 font-bold">{item.question}</span>
-                <Plus aria-hidden className="text-blue mt-0.5 size-5 shrink-0 group-open:hidden" />
-                <Minus aria-hidden className="text-blue mt-0.5 hidden size-5 shrink-0 group-open:block" />
-              </summary>
-              <p className="mt-3.5 max-w-[1000px] text-[15px] leading-[25px]">{item.answer}</p>
-            </details>
+            <StaggerItem key={item.question}>
+              <details
+                open={item.defaultOpen}
+                className="border-line group rounded-xl border bg-white px-6 py-5 shadow-[0_1px_2px_rgba(15,42,71,0.04)]"
+              >
+                <summary className="flex cursor-pointer list-none items-start justify-between gap-6 [&::-webkit-details-marker]:hidden">
+                  <span className="text-navy text-base leading-6 font-bold">{item.question}</span>
+                  <Plus aria-hidden className="text-blue mt-0.5 size-5 shrink-0 group-open:hidden" />
+                  <Minus aria-hidden className="text-blue mt-0.5 hidden size-5 shrink-0 group-open:block" />
+                </summary>
+                <p className="mt-3.5 max-w-[1000px] text-[15px] leading-[25px]">{item.answer}</p>
+              </details>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </Container>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

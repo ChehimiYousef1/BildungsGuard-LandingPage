@@ -1,5 +1,6 @@
 import { Star } from "lucide-react";
-import { Card, Container, Reveal, Section } from "@/components/ui";
+import { Card, Container, Section } from "@/components/ui";
+import { Stagger, StaggerItem } from "@/components/motion";
 import { SECTION_IDS } from "@/lib/constants";
 import type { TestimonialsContent } from "@/types/content";
 
@@ -21,9 +22,9 @@ export function Testimonials({ content }: { content: TestimonialsContent }) {
           </h2>
         </div>
 
-        <ul className="mt-12 grid gap-6 lg:grid-cols-2">
+        <Stagger as="ul" className="mt-12 grid gap-6 lg:grid-cols-2" stagger={0.1}>
           {content.items.map((item, i) => (
-            <Reveal as="li" key={item.role} index={i % 2}>
+            <StaggerItem as="li" key={item.role}>
               <Card as="figure" className="h-full p-7">
                 <div className="flex gap-0.5" aria-label="5 / 5">
                   {Array.from({ length: 5 }).map((_, star) => (
@@ -44,9 +45,9 @@ export function Testimonials({ content }: { content: TestimonialsContent }) {
                   </span>
                 </figcaption>
               </Card>
-            </Reveal>
+            </StaggerItem>
           ))}
-        </ul>
+        </Stagger>
       </Container>
     </Section>
   );
