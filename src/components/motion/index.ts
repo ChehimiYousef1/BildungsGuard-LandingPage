@@ -1,6 +1,11 @@
+export { CountUp } from "./CountUp";
+export { DrawCheck } from "./DrawCheck";
 export { DrawRule } from "./DrawRule";
 export { HoverLift } from "./HoverLift";
+export { Parallax } from "./Parallax";
 export { Reveal } from "./Reveal";
+export { ScrollProgress } from "./ScrollProgress";
 export { SplitText } from "./SplitText";
 export { Stagger, StaggerItem } from "./Stagger";
+export { Tilt } from "./Tilt";
 export * from "./tokens";

@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import { CountUp } from "@/components/motion";
 import { BrowserFrame } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import type { HeroContent } from "@/types/content";
@@ -25,7 +26,7 @@ export function HeroPreview({ preview }: { preview: HeroContent["preview"] }) {
             <div key={stat.label} className="border-line rounded-xl border p-4">
               <p className="text-muted text-[11px] font-semibold">{stat.label}</p>
               <p className={cn("font-display mt-1.5 text-[22px] font-extrabold", valueTone[stat.tone])}>
-                {stat.value}
+                <CountUp value={stat.value} />
               </p>
             </div>
           ))}

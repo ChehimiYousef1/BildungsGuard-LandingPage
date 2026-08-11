@@ -1,5 +1,5 @@
 import { CheckList, ScreenshotFrame } from "@/components/ui";
-import { Reveal } from "@/components/motion";
+import { Parallax, Reveal } from "@/components/motion";
 import { cn } from "@/lib/utils";
 import type { Feature } from "@/types/content";
 
@@ -37,7 +37,9 @@ export function FeatureRow({ feature, imageSide = "right" }: FeatureRowProps) {
         index={1}
         className="w-full lg:w-[564px] lg:shrink-0"
       >
-        <ScreenshotFrame title={feature.frameTitle} label={feature.screenshotLabel} />
+        <Parallax distance={30}>
+          <ScreenshotFrame title={feature.frameTitle} label={feature.screenshotLabel} />
+        </Parallax>
       </Reveal>
     </div>
   );

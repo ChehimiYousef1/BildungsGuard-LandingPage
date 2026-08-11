@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Card, Container, Section } from "@/components/ui";
-import { HoverLift, Stagger } from "@/components/motion";
+import { HoverLift, Stagger, Tilt } from "@/components/motion";
 import { SECTION_IDS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import type { InsightsContent } from "@/types/content";
@@ -36,26 +36,28 @@ export function Insights({ content }: { content: InsightsContent }) {
         <Stagger as="ul" className="mt-11 grid gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-13" stagger={0.09}>
           {content.items.map((article) => (
             <HoverLift as="li" key={article.title}>
-              <Card interactive as="article" className="h-full p-7">
-                <span
-                  className={cn(
-                    "inline-block rounded-full px-3 py-1.5 text-xs font-bold",
-                    tagTone[article.tone],
-                  )}
-                >
-                  {article.tag}
-                </span>
-                <h3 className="mt-5 text-lg leading-6 font-bold">{article.title}</h3>
-                <p className="mt-3.5 text-sm leading-6">{article.excerpt}</p>
-                <a
-                  href="#"
-                  className="text-blue mt-5 inline-flex items-center gap-1.5 text-sm font-bold"
-                  aria-label={`${article.readMore}: ${article.title}`}
-                >
-                  {article.readMore}
-                  <ArrowRight aria-hidden className="size-4" />
-                </a>
-              </Card>
+              <Tilt max={5}>
+                <Card interactive as="article" className="h-full p-7">
+                  <span
+                    className={cn(
+                      "inline-block rounded-full px-3 py-1.5 text-xs font-bold",
+                      tagTone[article.tone],
+                    )}
+                  >
+                    {article.tag}
+                  </span>
+                  <h3 className="mt-5 text-lg leading-6 font-bold">{article.title}</h3>
+                  <p className="mt-3.5 text-sm leading-6">{article.excerpt}</p>
+                  <a
+                    href="#"
+                    className="text-blue mt-5 inline-flex items-center gap-1.5 text-sm font-bold"
+                    aria-label={`${article.readMore}: ${article.title}`}
+                  >
+                    {article.readMore}
+                    <ArrowRight aria-hidden className="size-4" />
+                  </a>
+                </Card>
+              </Tilt>
             </HoverLift>
           ))}
         </Stagger>

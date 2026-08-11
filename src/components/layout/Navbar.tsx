@@ -43,7 +43,7 @@ export function Navbar({ links, cta, locale = "de" }: NavbarProps) {
       )}
     >
       <ScrollProgress />
-      <Container width="narrow" className="flex h-[68px] items-center">
+      <Container width="narrow" className="relative flex h-[68px] items-center">
         <a href={`#${SECTION_IDS.hero}`} className="shrink-0" aria-label="Bildungs Guard – Startseite">
           <Image
             src="/images/logo.png"
@@ -55,8 +55,10 @@ export function Navbar({ links, cta, locale = "de" }: NavbarProps) {
           />
         </a>
 
-        <nav aria-label="Hauptnavigation" className="ml-14 hidden lg:block">
-          <ul className="flex gap-6">
+        {/* Centred on the bar itself, so it stays centred regardless of how
+            wide the logo or the action group become. */}
+        <nav aria-label="Hauptnavigation" className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
+          <ul className="flex gap-7">
             {links.map((link) => (
               <li key={link.label}>
                 <a

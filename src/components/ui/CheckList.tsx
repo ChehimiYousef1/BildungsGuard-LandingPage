@@ -1,4 +1,4 @@
-import { Check } from "lucide-react";
+import { DrawCheck } from "@/components/motion/DrawCheck";
 import { cn } from "@/lib/utils";
 
 interface CheckListProps {
@@ -7,13 +7,13 @@ interface CheckListProps {
   itemClassName?: string;
 }
 
-/** The ✓ bullet lists used in the feature and benefit sections. */
+/** The ✓ bullet lists. Ticks draw themselves as the list scrolls in. */
 export function CheckList({ items, className, itemClassName }: CheckListProps) {
   return (
     <ul className={cn("space-y-3", className)}>
-      {items.map((item) => (
+      {items.map((item, i) => (
         <li key={item} className={cn("text-ink flex items-start gap-3 text-[15px]", itemClassName)}>
-          <Check aria-hidden className="text-success mt-[3px] size-[15px] shrink-0" strokeWidth={3} />
+          <DrawCheck index={i} className="text-success mt-[3px] shrink-0" />
           <span>{item}</span>
         </li>
       ))}

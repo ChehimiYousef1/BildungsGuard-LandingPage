@@ -1,5 +1,6 @@
 import { Check } from "lucide-react";
 import { ButtonLink, Container } from "@/components/ui";
+import { Parallax } from "@/components/motion";
 import { HeroAside, HeroIntro, HeroItem } from "@/components/motion/HeroIntro";
 import { SECTION_IDS } from "@/lib/constants";
 import type { HeroContent } from "@/types/content";
@@ -52,7 +53,9 @@ export function Hero({ content }: HeroProps) {
         </HeroIntro>
 
         <HeroAside className="w-full lg:mt-11 lg:w-auto lg:shrink-0">
-          <HeroPreview preview={content.preview} />
+          <Parallax distance={28}>
+            <HeroPreview preview={content.preview} />
+          </Parallax>
         </HeroAside>
       </Container>
     </section>
