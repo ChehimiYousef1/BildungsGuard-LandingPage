@@ -64,6 +64,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  /* Safety net: a reveal must never be able to leave content hidden. */
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
   *,
   *::before,
   *::after {

@@ -1,5 +1,5 @@
 import { Star } from "lucide-react";
-import { Card, Container, Section } from "@/components/ui";
+import { Card, Container, Reveal, Section } from "@/components/ui";
 import { SECTION_IDS } from "@/lib/constants";
 import type { TestimonialsContent } from "@/types/content";
 
@@ -23,7 +23,7 @@ export function Testimonials({ content }: { content: TestimonialsContent }) {
 
         <ul className="mt-12 grid gap-6 lg:grid-cols-2">
           {content.items.map((item, i) => (
-            <li key={item.role}>
+            <Reveal as="li" key={item.role} index={i % 2}>
               <Card as="figure" className="h-full p-7">
                 <div className="flex gap-0.5" aria-label="5 / 5">
                   {Array.from({ length: 5 }).map((_, star) => (
@@ -44,7 +44,7 @@ export function Testimonials({ content }: { content: TestimonialsContent }) {
                   </span>
                 </figcaption>
               </Card>
-            </li>
+            </Reveal>
           ))}
         </ul>
       </Container>

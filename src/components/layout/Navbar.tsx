@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { ButtonLink, Container } from "@/components/ui";
 import { LanguageSwitch } from "./LanguageSwitch";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { useScrollLock } from "@/hooks/useScrollLock";
 import { SECTION_IDS } from "@/lib/constants";
 import type { Locale } from "@/lib/i18n";
@@ -18,6 +20,7 @@ interface NavbarProps {
 
 export function Navbar({ links, cta, locale = "de" }: NavbarProps) {
   const [open, setOpen] = useState(false);
+  const reduced = usePrefersReducedMotion();
   useScrollLock(open);
 
   // Close on Escape — expected behaviour for any overlay.
@@ -76,31 +79,40 @@ export function Navbar({ links, cta, locale = "de" }: NavbarProps) {
         </div>
       </Container>
 
-      {open && (
-        <div id="mobile-menu" className="border-line border-t bg-white lg:hidden">
-          <Container width="narrow" className="py-6">
-            <ul className="space-y-4">
-              {links.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="text-ink block text-base font-semibold"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6 flex items-center gap-4">
-              <LanguageSwitch active={locale} />
-              <ButtonLink href={`#${SECTION_IDS.cta}`} size="sm" onClick={() => setOpen(false)}>
-                {cta}
-              </ButtonLink>
-            </div>
-          </Container>
-        </div>
-      )}
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            id="mobile-menu"
+            className="border-line overflow-hidden border-t bg-white lg:hidden"
+            initial={reduced ? false : { height: 0, opacity: 0 }}
+            animate={reduced ? undefined : { height: "auto", opacity: 1 }}
+            exit={reduced ? undefined : { height: 0, opacity: 0 }}
+            transition={{ duration: 0.24, ease: [0.21, 0.47, 0.32, 0.98] }}
+          >
+            <Container width="narrow" className="py-6">
+              <ul className="space-y-4">
+                {links.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className="text-ink block text-base font-semibold"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6 flex items-center gap-4">
+                <LanguageSwitch active={locale} />
+                <ButtonLink href={`#${SECTION_IDS.cta}`} size="sm" onClick={() => setOpen(false)}>
+                  {cta}
+                </ButtonLink>
+              </div>
+            </Container>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

@@ -1,4 +1,4 @@
-import { Card, Container, Section } from "@/components/ui";
+import { Card, Container, Reveal, Section } from "@/components/ui";
 import { SECTION_IDS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import type { ModulesContent } from "@/types/content";
@@ -20,8 +20,8 @@ export function Modules({ content }: { content: ModulesContent }) {
         </div>
 
         <ul className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {content.items.map((module) => (
-            <li key={module.code}>
+          {content.items.map((module, i) => (
+            <Reveal as="li" key={module.code} index={i % 3}>
               <Card className="h-full p-7">
                 <span
                   className={cn(
@@ -35,7 +35,7 @@ export function Modules({ content }: { content: ModulesContent }) {
                 <h3 className="mt-5 text-lg leading-6 font-bold">{module.title}</h3>
                 <p className="mt-3 text-sm leading-6">{module.description}</p>
               </Card>
-            </li>
+            </Reveal>
           ))}
         </ul>
       </Container>

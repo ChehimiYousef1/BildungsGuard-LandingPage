@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import { Card, Container, Section } from "@/components/ui";
+import { Card, Container, Reveal, Section } from "@/components/ui";
 import { SECTION_IDS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import type { InsightsContent } from "@/types/content";
@@ -33,8 +33,8 @@ export function Insights({ content }: { content: InsightsContent }) {
         </div>
 
         <ul className="mt-11 grid gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-13">
-          {content.items.map((article) => (
-            <li key={article.title}>
+          {content.items.map((article, i) => (
+            <Reveal as="li" key={article.title} index={i}>
               <Card as="article" className="h-full p-7">
                 <span
                   className={cn(
@@ -55,7 +55,7 @@ export function Insights({ content }: { content: InsightsContent }) {
                   <ArrowRight aria-hidden className="size-4" />
                 </a>
               </Card>
-            </li>
+            </Reveal>
           ))}
         </ul>
       </Container>

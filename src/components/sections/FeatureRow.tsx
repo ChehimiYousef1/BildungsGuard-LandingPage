@@ -1,4 +1,4 @@
-import { CheckList, ScreenshotFrame } from "@/components/ui";
+import { CheckList, Reveal, ScreenshotFrame } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import type { Feature } from "@/types/content";
 
@@ -17,7 +17,7 @@ export function FeatureRow({ feature, imageSide = "right" }: FeatureRowProps) {
         imageSide === "left" && "lg:flex-row-reverse",
       )}
     >
-      <div className="lg:max-w-[600px]">
+      <Reveal className="lg:max-w-[600px]">
         <p className="text-teal text-[13px] font-extrabold tracking-[0.09em] uppercase">{feature.eyebrow}</p>
         <h3 className="mt-3.5 text-[24px] leading-tight font-extrabold md:text-[30px]">
           {feature.title.map((line) => (
@@ -28,11 +28,11 @@ export function FeatureRow({ feature, imageSide = "right" }: FeatureRowProps) {
         </h3>
         <p className="mt-5 text-base leading-[26px]">{feature.description}</p>
         <CheckList items={feature.bullets} className="mt-6" />
-      </div>
+      </Reveal>
 
-      <div className="w-full lg:w-[564px] lg:shrink-0">
+      <Reveal index={1} className="w-full lg:w-[564px] lg:shrink-0">
         <ScreenshotFrame title={feature.frameTitle} label={feature.screenshotLabel} />
-      </div>
+      </Reveal>
     </div>
   );
 }
