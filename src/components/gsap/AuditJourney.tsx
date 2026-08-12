@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import { EASE, motionTokens } from "./tokens";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -16,6 +17,7 @@ interface AuditJourneyProps {
 export function AuditJourney({ children }: AuditJourneyProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
+
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useGSAP(
@@ -27,26 +29,29 @@ export function AuditJourney({ children }: AuditJourneyProps) {
         return;
       }
 
-      const steps = gsap.utils.toArray<HTMLElement>(
-        "[data-audit-step]",
-        root,
-      );
+      const steps = gsap.utils.toArray<HTMLElement>("[data-audit-step]", root);
 
-      const nodes = gsap.utils.toArray<HTMLElement>(
-        "[data-audit-node]",
-        root,
-      );
+      const nodes = gsap.utils.toArray<HTMLElement>("[data-audit-node]", root);
+
+      const numbers = gsap.utils.toArray<HTMLElement>("[data-audit-number]", root);
+
+      const t = motionTokens();
 
       if (prefersReducedMotion) {
-        gsap.set(progress, {
-          scaleY: 1,
-        });
+        gsap.set(progress, { scaleY: 1 });
 
         gsap.set(nodes, {
-          backgroundColor: "currentColor",
-          borderColor: "currentColor",
+          scale: 1,
+          backgroundColor: t.teal,
+          borderColor: t.teal,
+        });
+
+        gsap.set(steps, {
+          opacity: 1,
           scale: 1,
         });
+
+        gsap.set(numbers, { opacity: 0.7, y: 0 });
 
         return;
       }
@@ -57,22 +62,30 @@ export function AuditJourney({ children }: AuditJourneyProps) {
       });
 
       gsap.set(nodes, {
-        scale: 0.75,
+        scale: 0.72,
       });
+
+      gsap.set(steps, {
+        opacity: 0.72,
+        scale: 0.985,
+      });
+
+      gsap.set(numbers, { opacity: 0, y: 8 });
 
       gsap.to(progress, {
         scaleY: 1,
-        ease: "none",
+        ease: EASE.linear,
         scrollTrigger: {
           trigger: root,
           start: "top 70%",
-          end: "bottom 70%",
-          scrub: 0.5,
+          end: "bottom 65%",
+          scrub: 0.4,
         },
       });
 
       steps.forEach((step, index) => {
         const node = nodes[index];
+        const number = numbers[index];
 
         if (!node) {
           return;
@@ -80,36 +93,70 @@ export function AuditJourney({ children }: AuditJourneyProps) {
 
         ScrollTrigger.create({
           trigger: step,
-          start: "top 65%",
-          end: "bottom 40%",
+          start: "top 68%",
+          end: "bottom 42%",
 
           onEnter: () => {
+            gsap.to(step, {
+              opacity: 1,
+              scale: 1,
+              duration: 0.28,
+              ease: EASE.settle,
+            });
+
             gsap.to(node, {
               scale: 1.15,
-              backgroundColor: "#0f766e",
-              borderColor: "#0f766e",
-              duration: 0.3,
-              ease: "power2.out",
+              backgroundColor: t.teal,
+              borderColor: t.teal,
+              duration: 0.22,
+              ease: EASE.pop,
             });
+
+            if (number) {
+              gsap.to(number, {
+                opacity: 0.7,
+                y: 0,
+                duration: 0.22,
+                ease: EASE.settle,
+              });
+            }
           },
 
           onEnterBack: () => {
+            gsap.to(step, {
+              opacity: 1,
+              scale: 1,
+              duration: 0.22,
+            });
+
             gsap.to(node, {
               scale: 1.15,
-              backgroundColor: "#0f766e",
-              borderColor: "#0f766e",
-              duration: 0.3,
-              ease: "power2.out",
+              backgroundColor: t.teal,
+              borderColor: t.teal,
+              duration: 0.25,
+            });
+          },
+
+          onLeave: () => {
+            gsap.to(step, {
+              opacity: 0.84,
+              scale: 0.992,
+              duration: 0.22,
             });
           },
 
           onLeaveBack: () => {
-            gsap.to(node, {
-              scale: 0.75,
-              backgroundColor: "#ffffff",
-              borderColor: "#cbd5e1",
+            gsap.to(step, {
+              opacity: 0.72,
+              scale: 0.985,
               duration: 0.25,
-              ease: "power2.out",
+            });
+
+            gsap.to(node, {
+              scale: 0.72,
+              backgroundColor: t.white,
+              borderColor: t.line,
+              duration: 0.25,
             });
           },
         });
@@ -123,19 +170,11 @@ export function AuditJourney({ children }: AuditJourneyProps) {
 
   return (
     <div ref={rootRef} className="relative">
-      <div
-        aria-hidden
-        className="absolute top-0 bottom-0 left-4 hidden w-px bg-slate-200 lg:block"
-      >
-        <div
-          ref={progressRef}
-          className="bg-teal h-full w-full origin-top"
-        />
+      <div aria-hidden className="bg-line absolute top-0 bottom-0 left-5 hidden w-px lg:block">
+        <div ref={progressRef} className="bg-teal h-full w-full origin-top" />
       </div>
 
-      <div className="relative lg:pl-12">
-        {children}
-      </div>
+      <div className="relative lg:pl-14">{children}</div>
     </div>
   );
 }

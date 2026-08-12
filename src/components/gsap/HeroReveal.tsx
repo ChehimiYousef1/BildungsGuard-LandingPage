@@ -13,10 +13,7 @@ interface HeroRevealProps {
   className?: string;
 }
 
-export function HeroReveal({
-  children,
-  className,
-}: HeroRevealProps) {
+export function HeroReveal({ children, className }: HeroRevealProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = usePrefersReducedMotion();
 
@@ -41,8 +38,8 @@ export function HeroReveal({
           y: 0,
           scale: 1,
           rotate: 0,
-          duration: 1.05,
-          delay: 0.25,
+          duration: 0.68,
+          delay: 0.12,
           ease: "power3.out",
         },
       );

@@ -303,22 +303,26 @@ export const en: SiteContent = {
     items: [
       {
         title: "Servers in Germany",
+        icon: "hosting",
         description:
           "Operation and data storage exclusively in German data centres, with no transfer to " +
           "third countries.",
       },
       {
         title: "GDPR by design",
+        icon: "privacy",
         description:
           "Roles and permissions, deletion periods and data processing agreements are part of " +
           "the platform, not an add-on.",
       },
       {
         title: "Revision-safe archiving",
+        icon: "archive",
         description: "Signed entries, traceable changes and exports that certification bodies accept.",
       },
       {
         title: "Encrypted transmission",
+        icon: "transport",
         description: "SSL/TLS on every connection, encrypted backups and regular restore testing.",
       },
     ],

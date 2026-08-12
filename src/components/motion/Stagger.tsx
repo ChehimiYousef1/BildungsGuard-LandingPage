@@ -22,7 +22,7 @@ export function Stagger({
   children,
   className,
   as = "div",
-  stagger = 0.08,
+  stagger = 0.05,
   delayChildren = 0,
 }: StaggerProps) {
   const reduced = usePrefersReducedMotion();

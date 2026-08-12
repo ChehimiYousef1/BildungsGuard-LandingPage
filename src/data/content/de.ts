@@ -302,24 +302,28 @@ export const de: SiteContent = {
     items: [
       {
         title: "Serverstandort Deutschland",
+        icon: "hosting",
         description:
           "Betrieb und Datenhaltung ausschließlich in deutschen Rechenzentren, ohne Transfer in " +
           "Drittstaaten.",
       },
       {
         title: "DSGVO by design",
+        icon: "privacy",
         description:
           "Rollen- und Rechtekonzept, Löschfristen und Auftragsverarbeitung sind Teil der " +
           "Plattform, nicht Beiwerk.",
       },
       {
         title: "Revisionssichere Ablage",
+        icon: "archive",
         description:
           "Signierte Einträge, nachvollziehbare Änderungen und Exporte, die fachkundige Stellen " +
           "anerkennen.",
       },
       {
         title: "Verschlüsselte Übertragung",
+        icon: "transport",
         description:
           "SSL/TLS auf allen Verbindungen, verschlüsselte Backups und regelmäßige " +
           "Wiederherstellungstests.",

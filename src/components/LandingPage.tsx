@@ -36,8 +36,17 @@ export function LandingPage({ content, locale }: { content: SiteContent; locale:
           headingId="audit-heading"
           content={content.audit}
           tone="surface"
+          animation="audit"
+          dimensions={["1d", "3d"]}
         />
-        <FeatureGroup id={SECTION_IDS.lms} headingId="lms-heading" content={content.lms} tone="light" />
+        <FeatureGroup
+          id={SECTION_IDS.lms}
+          headingId="lms-heading"
+          content={content.lms}
+          tone="light"
+          animation="lms"
+          dimensions={["2d", "3d"]}
+        />
         <Benefits content={content.benefits} />
         <HowItWorks content={content.howItWorks} />
         <Modules content={content.modules} />

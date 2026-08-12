@@ -126,9 +126,13 @@ export interface WhyContent {
   pillars: Pillar[];
 }
 
+/** Icon key for a security claim — resolved to a Lucide icon in the section. */
+export type SecurityIcon = "hosting" | "privacy" | "archive" | "transport";
+
 export interface SecurityItem {
   title: string;
   description: string;
+  icon: SecurityIcon;
 }
 
 export interface SecurityContent {
