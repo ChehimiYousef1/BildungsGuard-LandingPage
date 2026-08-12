@@ -18,7 +18,8 @@ export function Footer({ content }: FooterProps) {
                 alt="Bildungs Guard"
                 width={165}
                 height={36}
-                className="h-9 w-auto"
+                className="h-9"
+                style={{ width: "auto" }}
               />
             </div>
             <p className="text-navy-body mt-5 max-w-[300px] text-sm leading-6">{content.description}</p>
