@@ -1,4 +1,4 @@
-import { Check } from "lucide-react";
+import { AuditTrail } from "@/components/motion/AuditTrail";
 import { CountUp } from "@/components/motion";
 import { BrowserFrame } from "@/components/ui";
 import { cn } from "@/lib/utils";
@@ -35,19 +35,7 @@ export function HeroPreview({ preview }: { preview: HeroContent["preview"] }) {
         <div className="border-line mt-3.5 rounded-xl border p-4">
           <p className="text-ink text-xs font-bold">{trailTitle}</p>
 
-          <div className="mt-3.5 flex items-center">
-            {steps.slice(0, -1).map((step, i) => (
-              <div key={step} className="flex flex-1 items-center">
-                <span className="bg-teal flex size-[22px] shrink-0 items-center justify-center rounded-full">
-                  <Check aria-hidden className="size-3 text-white" strokeWidth={3} />
-                </span>
-                <span className={cn("h-0.5 flex-1", i === steps.length - 2 ? "bg-line" : "bg-teal")} />
-              </div>
-            ))}
-            <span className="border-line text-muted flex size-[22px] shrink-0 items-center justify-center rounded-full border bg-white text-xs">
-              {steps.length}
-            </span>
-          </div>
+          <AuditTrail steps={steps} />
 
           <div className="mt-2 flex text-[10px] font-semibold">
             {steps.slice(0, -1).map((step) => (

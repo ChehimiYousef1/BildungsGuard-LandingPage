@@ -24,7 +24,7 @@ export function Testimonials({ content }: { content: TestimonialsContent }) {
 
         <Stagger as="ul" className="mt-12 grid gap-6 lg:grid-cols-2" stagger={0.1}>
           {content.items.map((item, i) => (
-            <StaggerItem as="li" key={item.role}>
+            <StaggerItem as="li" key={item.role} effect="spring">
               <Card as="figure" className="h-full p-7">
                 <div className="flex gap-0.5" aria-label="5 / 5">
                   {Array.from({ length: 5 }).map((_, star) => (

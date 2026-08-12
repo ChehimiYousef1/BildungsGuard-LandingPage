@@ -15,7 +15,7 @@ export function TrustBar({ content }: TrustBarProps) {
         </Reveal>
         <Stagger className="mt-5 flex flex-wrap gap-3" stagger={0.07}>
           {content.badges.map((badge) => (
-            <StaggerItem key={badge.label} effect="pop">
+            <StaggerItem key={badge.label} effect="spring">
               <Badge>{badge.label}</Badge>
             </StaggerItem>
           ))}

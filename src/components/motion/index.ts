@@ -1,3 +1,5 @@
+export { Assemble, AssembleItem } from "./Assemble";
+export { AuditTrail } from "./AuditTrail";
 export { CountUp } from "./CountUp";
 export { DrawCheck } from "./DrawCheck";
 export { DrawRule } from "./DrawRule";

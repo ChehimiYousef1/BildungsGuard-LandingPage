@@ -1,5 +1,5 @@
 import { Card, Container, Section } from "@/components/ui";
-import { Stagger, StaggerItem, Tilt } from "@/components/motion";
+import { Assemble, AssembleItem, Tilt } from "@/components/motion";
 import { SECTION_IDS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import type { ModulesContent } from "@/types/content";
@@ -20,10 +20,10 @@ export function Modules({ content }: { content: ModulesContent }) {
           <p className="mx-auto mt-4 max-w-[640px] text-base leading-[26px]">{content.body}</p>
         </div>
 
-        {/* Signature moment: the grid springs in on a diagonal. */}
-        <Stagger as="ul" className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3" stagger={0.06}>
-          {content.items.map((module) => (
-            <StaggerItem as="li" key={module.code} effect="pop">
+        {/* Section style: cards arrive scattered and settle into the grid. */}
+        <Assemble as="ul" className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {content.items.map((module, i) => (
+            <AssembleItem as="li" key={module.code} index={i}>
               <Tilt>
                 <Card interactive className="h-full p-7">
                   <span
@@ -39,9 +39,9 @@ export function Modules({ content }: { content: ModulesContent }) {
                   <p className="mt-3 text-sm leading-6">{module.description}</p>
                 </Card>
               </Tilt>
-            </StaggerItem>
+            </AssembleItem>
           ))}
-        </Stagger>
+        </Assemble>
       </Container>
     </Section>
   );

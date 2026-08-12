@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Card, Container, Section } from "@/components/ui";
-import { HoverLift, Stagger, Tilt } from "@/components/motion";
+import { Assemble, AssembleItem, Tilt } from "@/components/motion";
 import { SECTION_IDS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import type { InsightsContent } from "@/types/content";
@@ -33,9 +33,9 @@ export function Insights({ content }: { content: InsightsContent }) {
           </a>
         </div>
 
-        <Stagger as="ul" className="mt-11 grid gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-13" stagger={0.09}>
-          {content.items.map((article) => (
-            <HoverLift as="li" key={article.title}>
+        <Assemble as="ul" className="mt-11 grid gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-13" stagger={0.09}>
+          {content.items.map((article, i) => (
+            <AssembleItem as="li" key={article.title} index={i}>
               <Tilt max={5}>
                 <Card interactive as="article" className="h-full p-7">
                   <span
@@ -58,9 +58,9 @@ export function Insights({ content }: { content: InsightsContent }) {
                   </a>
                 </Card>
               </Tilt>
-            </HoverLift>
+            </AssembleItem>
           ))}
-        </Stagger>
+        </Assemble>
       </Container>
     </Section>
   );

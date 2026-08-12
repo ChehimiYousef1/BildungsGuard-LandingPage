@@ -28,3 +28,9 @@ export const popIn: Variants = {
   hidden: { opacity: 0, scale: 0.94 },
   show: { opacity: 1, scale: 1, transition: SPRING },
 };
+
+/** Style C: overshoot settle, used by the sections that should feel alive. */
+export const springUp: Variants = {
+  hidden: { opacity: 0, y: 22 },
+  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 260, damping: 18, mass: 0.8 } },
+};

@@ -29,7 +29,7 @@ export function Benefits({ content }: { content: BenefitsContent }) {
 
         <Stagger className="mt-8 flex flex-wrap gap-3" stagger={0.07}>
           {content.badges.map((badge) => (
-            <StaggerItem key={badge.label} effect="pop">
+            <StaggerItem key={badge.label} effect="spring">
               <Badge>{badge.label}</Badge>
             </StaggerItem>
           ))}

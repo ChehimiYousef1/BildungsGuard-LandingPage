@@ -3,7 +3,7 @@
 import { motion, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
-import { fadeUp, popIn, staggerParent, VIEWPORT } from "./tokens";
+import { fadeUp, popIn, springUp, staggerParent, VIEWPORT } from "./tokens";
 
 type Tag = "div" | "ul" | "ol" | "section";
 type ItemTag = "div" | "li" | "article" | "figure";
@@ -51,8 +51,8 @@ interface StaggerItemProps {
   children: ReactNode;
   className?: string;
   as?: ItemTag;
-  /** "rise" travels up, "pop" springs in from 92% scale. */
-  effect?: "rise" | "pop";
+  /** "rise" eases up, "pop" scales in, "spring" overshoots and settles. */
+  effect?: "rise" | "pop" | "spring";
   variants?: Variants;
 }
 
@@ -73,7 +73,11 @@ export function StaggerItem({
   const MotionTag = motion[as];
 
   return (
-    <MotionTag data-reveal className={className} variants={variants ?? (effect === "pop" ? popIn : fadeUp)}>
+    <MotionTag
+      data-reveal
+      className={className}
+      variants={variants ?? (effect === "pop" ? popIn : effect === "spring" ? springUp : fadeUp)}
+    >
       {children}
     </MotionTag>
   );

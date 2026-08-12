@@ -1,5 +1,5 @@
 import { Card, Container, Section, SectionHeading } from "@/components/ui";
-import { Reveal, Tilt } from "@/components/motion";
+import { Stagger, StaggerItem, Tilt } from "@/components/motion";
 import { SECTION_IDS } from "@/lib/constants";
 import type { HowItWorksContent } from "@/types/content";
 
@@ -16,9 +16,9 @@ export function HowItWorks({ content }: { content: HowItWorksContent }) {
           align="center"
         />
 
-        <ol className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <Stagger as="div" className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4" stagger={0.1}>
           {content.steps.map((step, i) => (
-            <Reveal as="li" key={step.title} index={i} from="left" distance={20}>
+            <StaggerItem as="li" key={step.title} effect="spring">
               <Tilt max={5}>
                 <Card interactive className="h-full p-7">
                   <span className="bg-blue font-display flex size-10 items-center justify-center rounded-[11px] text-[15px] font-extrabold text-white">
@@ -28,9 +28,9 @@ export function HowItWorks({ content }: { content: HowItWorksContent }) {
                   <p className="mt-3 text-sm leading-6">{step.description}</p>
                 </Card>
               </Tilt>
-            </Reveal>
+            </StaggerItem>
           ))}
-        </ol>
+        </Stagger>
       </Container>
     </Section>
   );
