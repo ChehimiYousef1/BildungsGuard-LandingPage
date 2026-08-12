@@ -1,5 +1,5 @@
 import { Container, Section, SectionHeading } from "@/components/ui";
-import { DrawRule, Stagger, StaggerItem } from "@/components/motion";
+import { DrawRule, MotionGroup } from "@/motion";
 import { SECTION_IDS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import type { WhyContent } from "@/types/content";
@@ -22,15 +22,15 @@ export function WhyUs({ content }: { content: WhyContent }) {
         />
 
         {/* Signature moment: each accent rule draws before its text. */}
-        <Stagger as="ul" className="mt-14 grid gap-10 md:grid-cols-3 lg:gap-13" stagger={0.12}>
+        <MotionGroup as="ul" className="mt-14 grid gap-10 md:grid-cols-3 lg:gap-13" gap="loose">
           {content.pillars.map((pillar) => (
-            <StaggerItem as="li" key={pillar.title}>
+            <li key={pillar.title} data-motion-item>
               <DrawRule className={cn(accents[pillar.accent])} />
               <h3 className="mt-6 text-xl font-bold">{pillar.title}</h3>
               <p className="mt-3.5 text-[15px] leading-[25px]">{pillar.description}</p>
-            </StaggerItem>
+            </li>
           ))}
-        </Stagger>
+        </MotionGroup>
       </Container>
     </Section>
   );

@@ -1,6 +1,6 @@
 import { ButtonLink, Container } from "@/components/ui";
-import { Reveal, SplitText } from "@/components/motion";
-import { CTAProgress } from "@/components/gsap";
+import { Motion, SplitText } from "@/motion";
+import { CTAProgress } from "@/motion/sequences";
 import { SECTION_IDS } from "@/lib/constants";
 import type { CtaContent } from "@/types/content";
 
@@ -14,9 +14,9 @@ export function CallToAction({ content }: { content: CtaContent }) {
           text={content.heading.join(" ")}
           className="text-[28px] leading-tight font-extrabold text-white md:text-[40px]"
         />
-        <Reveal index={1}>
+        <Motion index={1}>
           <p className="text-navy-body mx-auto mt-6 max-w-[640px] text-[17px] leading-7">{content.body}</p>
-        </Reveal>
+        </Motion>
 
         {/* Closes the journey the hero opened: fill, land, one pulse, rest. */}
         <CTAProgress>
@@ -31,12 +31,12 @@ export function CallToAction({ content }: { content: CtaContent }) {
           </div>
         </CTAProgress>
 
-        <Reveal index={2} className="mt-9 flex flex-wrap justify-center gap-4">
+        <Motion index={2} className="mt-9 flex flex-wrap justify-center gap-4">
           <ButtonLink href={`#${SECTION_IDS.demo}`}>{content.primaryCta}</ButtonLink>
           <ButtonLink href="#" variant="dark">
             {content.secondaryCta}
           </ButtonLink>
-        </Reveal>
+        </Motion>
 
         <p className="text-navy-muted mt-7 text-sm">{content.note}</p>
       </Container>

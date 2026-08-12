@@ -1,5 +1,5 @@
 import { Card, Container, Section } from "@/components/ui";
-import { Assemble, AssembleItem, Tilt } from "@/components/motion";
+import { MotionGroup, Tilt } from "@/motion";
 import { SECTION_IDS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import type { ModulesContent } from "@/types/content";
@@ -21,9 +21,9 @@ export function Modules({ content }: { content: ModulesContent }) {
         </div>
 
         {/* Section style: cards arrive scattered and settle into the grid. */}
-        <Assemble as="ul" className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {content.items.map((module, i) => (
-            <AssembleItem as="li" key={module.code} index={i}>
+        <MotionGroup preset="assemble" as="ul" className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {content.items.map((module) => (
+            <li key={module.code} data-motion-item>
               <Tilt>
                 <Card interactive className="h-full p-7">
                   <span
@@ -39,9 +39,9 @@ export function Modules({ content }: { content: ModulesContent }) {
                   <p className="mt-3 text-sm leading-6">{module.description}</p>
                 </Card>
               </Tilt>
-            </AssembleItem>
+            </li>
           ))}
-        </Assemble>
+        </MotionGroup>
       </Container>
     </Section>
   );

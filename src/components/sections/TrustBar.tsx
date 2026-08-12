@@ -1,5 +1,5 @@
 import { Badge, Container } from "@/components/ui";
-import { Reveal, Stagger, StaggerItem } from "@/components/motion";
+import { Motion, MotionGroup } from "@/motion";
 import type { TrustContent } from "@/types/content";
 
 interface TrustBarProps {
@@ -10,16 +10,16 @@ export function TrustBar({ content }: TrustBarProps) {
   return (
     <section className="border-line border-b bg-white py-9">
       <Container width="narrow">
-        <Reveal as="div">
+        <Motion>
           <p className="text-ink text-base font-bold">{content.headline}</p>
-        </Reveal>
-        <Stagger className="mt-5 flex flex-wrap gap-3" stagger={0.07}>
+        </Motion>
+        <MotionGroup preset="pop" className="mt-5 flex flex-wrap gap-3" gap="tight">
           {content.badges.map((badge) => (
-            <StaggerItem key={badge.label} effect="spring">
+            <span key={badge.label} data-motion-item>
               <Badge>{badge.label}</Badge>
-            </StaggerItem>
+            </span>
           ))}
-        </Stagger>
+        </MotionGroup>
       </Container>
     </section>
   );

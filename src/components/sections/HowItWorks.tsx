@@ -1,6 +1,6 @@
 import { Card, Container, Section, SectionHeading } from "@/components/ui";
-import { Tilt } from "@/components/motion";
-import { ProcessTimeline } from "@/components/gsap";
+import { Tilt } from "@/motion";
+import { ProcessTimeline } from "@/motion/sequences";
 import { SECTION_IDS } from "@/lib/constants";
 import type { HowItWorksContent } from "@/types/content";
 

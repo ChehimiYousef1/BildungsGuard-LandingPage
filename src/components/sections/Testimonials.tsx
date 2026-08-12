@@ -1,6 +1,6 @@
 import { Star } from "lucide-react";
 import { Card, Container, Section } from "@/components/ui";
-import { Stagger, StaggerItem } from "@/components/motion";
+import { MotionGroup } from "@/motion";
 import { SECTION_IDS } from "@/lib/constants";
 import type { TestimonialsContent } from "@/types/content";
 
@@ -22,9 +22,9 @@ export function Testimonials({ content }: { content: TestimonialsContent }) {
           </h2>
         </div>
 
-        <Stagger as="ul" className="mt-12 grid gap-6 lg:grid-cols-2" stagger={0.1}>
+        <MotionGroup as="ul" className="mt-12 grid gap-6 lg:grid-cols-2" gap="base">
           {content.items.map((item, i) => (
-            <StaggerItem as="li" key={item.role} effect="spring">
+            <li key={item.role} data-motion-item>
               <Card as="figure" className="h-full p-7">
                 <div className="flex gap-0.5" aria-label="5 / 5">
                   {Array.from({ length: 5 }).map((_, star) => (
@@ -45,9 +45,9 @@ export function Testimonials({ content }: { content: TestimonialsContent }) {
                   </span>
                 </figcaption>
               </Card>
-            </StaggerItem>
+            </li>
           ))}
-        </Stagger>
+        </MotionGroup>
       </Container>
     </Section>
   );

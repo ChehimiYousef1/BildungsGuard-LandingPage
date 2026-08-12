@@ -1,5 +1,5 @@
-import { AuditJourney, LMSAssembly } from "@/components/gsap";
-import type { MotionDimension } from "@/components/gsap/FeatureMotion";
+import { AuditJourney, LMSAssembly } from "@/motion/sequences";
+import type { MotionDimension } from "@/motion/sequences";
 import { Container, Section, SectionHeading } from "@/components/ui";
 import type { FeatureGroupContent } from "@/types/content";
 

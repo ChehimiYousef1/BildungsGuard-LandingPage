@@ -1,7 +1,7 @@
 import { Archive, Lock, ServerCog, ShieldCheck, type LucideIcon } from "lucide-react";
 import { Badge, Card, Container, Section, SectionHeading } from "@/components/ui";
-import { Reveal } from "@/components/motion";
-import { SecurityScan } from "@/components/gsap";
+import { Motion } from "@/motion";
+import { SecurityScan } from "@/motion/sequences";
 import { SECTION_IDS } from "@/lib/constants";
 import type { SecurityContent, SecurityIcon } from "@/types/content";
 
@@ -34,12 +34,11 @@ export function Security({ content }: { content: SecurityContent }) {
               const Icon = icons[item.icon];
 
               return (
-                <Reveal
+                <Motion
                   as="li"
                   key={item.title}
                   index={i % 2}
-                  from={i % 2 === 0 ? "left" : "right"}
-                  distance={24}
+                  preset={i % 2 === 0 ? "enterLeft" : "enterRight"}
                 >
                   <Card className="flex h-full gap-5 p-7">
                     <span
@@ -55,7 +54,7 @@ export function Security({ content }: { content: SecurityContent }) {
                       <p className="mt-2.5 text-sm leading-6">{item.description}</p>
                     </div>
                   </Card>
-                </Reveal>
+                </Motion>
               );
             })}
           </ul>

@@ -11,12 +11,14 @@ function subscribe(callback: () => void) {
 }
 
 /**
- * SSR-safe reduced-motion check. useSyncExternalStore reads the real value
- * during the hydration render, so an animation never starts for a user who
- * asked for less motion — framer-motion's own hook reports false on that first
- * render and applies the hidden state before it corrects itself.
+ * SSR-safe reduced-motion check.
+ *
+ * useSyncExternalStore reads the real value during the hydration render.
+ * Hooks that read matchMedia in an effect report `false` on that first pass,
+ * which is long enough to apply an opacity-0 from-state — leaving the page
+ * blank for exactly the users who asked for less motion.
  */
-export function usePrefersReducedMotion(): boolean {
+export function useReducedMotion(): boolean {
   return useSyncExternalStore(
     subscribe,
     () => window.matchMedia(QUERY).matches,

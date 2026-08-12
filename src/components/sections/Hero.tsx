@@ -1,8 +1,8 @@
 import { Check } from "lucide-react";
 
-import { HeroReveal } from "@/components/gsap/HeroReveal";
-import { Parallax } from "@/components/motion";
-import { HeroIntro, HeroItem } from "@/components/motion/HeroIntro";
+import { HeroReveal } from "@/motion/sequences";
+import { Parallax } from "@/motion";
+import { HeroIntro, HeroItem } from "@/motion/sequences";
 import { ButtonLink, Container } from "@/components/ui";
 import { SECTION_IDS } from "@/lib/constants";
 import type { HeroContent } from "@/types/content";
@@ -32,39 +32,24 @@ export function Hero({ content }: HeroProps) {
             ))}
           </h1>
 
-          <HeroItem
-            as="p"
-            className="text-navy font-display mt-3.5 text-lg font-bold lg:text-[22px]"
-          >
+          <HeroItem as="p" className="text-navy font-display mt-3.5 text-lg font-bold lg:text-[22px]">
             {content.subline}
           </HeroItem>
 
-          <HeroItem
-            as="p"
-            className="mt-6 max-w-[600px] text-base leading-7 lg:text-lg lg:leading-[29px]"
-          >
+          <HeroItem as="p" className="mt-6 max-w-[600px] text-base leading-7 lg:text-lg lg:leading-[29px]">
             {content.body}
           </HeroItem>
 
           <HeroItem className="mt-9 flex flex-wrap gap-4">
-            <ButtonLink href={`#${SECTION_IDS.cta}`}>
-              {content.primaryCta}
-            </ButtonLink>
+            <ButtonLink href={`#${SECTION_IDS.cta}`}>{content.primaryCta}</ButtonLink>
 
             <ButtonLink href="#" variant="ghost">
               {content.secondaryCta}
             </ButtonLink>
           </HeroItem>
 
-          <HeroItem
-            as="p"
-            className="mt-6 flex items-center gap-2.5 text-sm"
-          >
-            <Check
-              aria-hidden
-              className="text-success size-4 shrink-0"
-              strokeWidth={3}
-            />
+          <HeroItem as="p" className="mt-6 flex items-center gap-2.5 text-sm">
+            <Check aria-hidden className="text-success size-4 shrink-0" strokeWidth={3} />
             {content.note}
           </HeroItem>
         </HeroIntro>

@@ -1,7 +1,7 @@
 import { Play } from "lucide-react";
 import { ButtonLink, Card, Container, Section } from "@/components/ui";
 import { DemoRequestForm } from "@/components/forms/DemoRequestForm";
-import { Reveal } from "@/components/motion";
+import { Motion } from "@/motion";
 import { SECTION_IDS } from "@/lib/constants";
 import type { DemoContent } from "@/types/content";
 
@@ -12,7 +12,7 @@ export function WebDemo({ content }: { content: DemoContent }) {
         width="narrow"
         className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between"
       >
-        <Reveal className="lg:max-w-[600px]">
+        <Motion preset="enterLeft" className="lg:max-w-[600px]">
           <p className="text-blue text-[13px] font-extrabold tracking-[0.09em] uppercase">
             {content.eyebrow}
           </p>
@@ -48,11 +48,11 @@ export function WebDemo({ content }: { content: DemoContent }) {
               {content.questionCta}
             </ButtonLink>
           </Card>
-        </Reveal>
+        </Motion>
 
-        <Reveal from="right" distance={28} className="w-full lg:w-auto lg:shrink-0">
+        <Motion preset="enterRight" className="w-full lg:w-auto lg:shrink-0">
           <DemoRequestForm content={content.form} />
-        </Reveal>
+        </Motion>
       </Container>
     </Section>
   );

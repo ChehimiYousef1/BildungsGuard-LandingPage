@@ -1,4 +1,4 @@
-import { FeatureMotion, type MotionDimension } from "@/components/gsap/FeatureMotion";
+import { FeatureMotion, type MotionDimension } from "@/motion/sequences";
 import { CheckList, ScreenshotFrame } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import type { Feature } from "@/types/content";

@@ -2,12 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { ButtonLink, Container } from "@/components/ui";
 import { LanguageSwitch } from "./LanguageSwitch";
-import { ScrollProgress } from "@/components/motion/ScrollProgress";
-import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import { Collapse, ScrollProgress } from "@/motion";
 import { useScrolled } from "@/hooks/useScrolled";
 import { useScrollLock } from "@/hooks/useScrollLock";
 import { SECTION_IDS } from "@/lib/constants";
@@ -23,7 +21,6 @@ interface NavbarProps {
 
 export function Navbar({ links, cta, locale = "de" }: NavbarProps) {
   const [open, setOpen] = useState(false);
-  const reduced = usePrefersReducedMotion();
   const scrolled = useScrolled();
   useScrollLock(open);
 
@@ -92,16 +89,9 @@ export function Navbar({ links, cta, locale = "de" }: NavbarProps) {
         </div>
       </Container>
 
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            id="mobile-menu"
-            className="border-line overflow-hidden border-t bg-white lg:hidden"
-            initial={reduced ? false : { height: 0, opacity: 0 }}
-            animate={reduced ? undefined : { height: "auto", opacity: 1 }}
-            exit={reduced ? undefined : { height: 0, opacity: 0 }}
-            transition={{ duration: 0.24, ease: [0.21, 0.47, 0.32, 0.98] }}
-          >
+      {open && (
+        <div id="mobile-menu" className="border-line border-t bg-white lg:hidden">
+          <Collapse open={open}>
             <Container width="narrow" className="py-6">
               <ul className="space-y-4">
                 {links.map((link) => (
@@ -123,9 +113,9 @@ export function Navbar({ links, cta, locale = "de" }: NavbarProps) {
                 </ButtonLink>
               </div>
             </Container>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </Collapse>
+        </div>
+      )}
     </header>
   );
 }

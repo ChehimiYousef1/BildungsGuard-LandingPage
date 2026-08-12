@@ -1,4 +1,4 @@
-import { DrawCheck } from "@/components/motion/DrawCheck";
+import { DrawCheck } from "@/motion";
 import { cn } from "@/lib/utils";
 
 interface CheckListProps {

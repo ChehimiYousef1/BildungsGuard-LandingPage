@@ -1,5 +1,5 @@
-import { AuditTrail } from "@/components/motion/AuditTrail";
-import { CountUp } from "@/components/motion";
+import { AuditTrail } from "@/motion/sequences";
+import { CountUp } from "@/motion";
 import { BrowserFrame } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import type { HeroContent } from "@/types/content";
@@ -16,7 +16,6 @@ const valueTone = {
  */
 export function HeroPreview({ preview }: { preview: HeroContent["preview"] }) {
   const { title, stats, trailTitle, steps, footerText, footerBadge } = preview;
-  const lastStep = steps[steps.length - 1];
 
   return (
     <BrowserFrame title={title} className="w-full max-w-[556px]">
@@ -32,20 +31,7 @@ export function HeroPreview({ preview }: { preview: HeroContent["preview"] }) {
           ))}
         </div>
 
-        <div className="border-line mt-3.5 rounded-xl border p-4">
-          <p className="text-ink text-xs font-bold">{trailTitle}</p>
-
-          <AuditTrail steps={steps} />
-
-          <div className="mt-2 flex text-[10px] font-semibold">
-            {steps.slice(0, -1).map((step) => (
-              <span key={step} className="text-teal flex-1">
-                {step}
-              </span>
-            ))}
-            <span className="text-muted">{lastStep}</span>
-          </div>
-        </div>
+        <AuditTrail steps={steps} title={trailTitle} />
 
         <div className="border-line mt-3.5 flex items-center justify-between gap-3 rounded-xl border p-4">
           <p className="text-ink text-xs">{footerText}</p>

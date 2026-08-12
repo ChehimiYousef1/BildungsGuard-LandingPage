@@ -1,5 +1,5 @@
 import { Badge, CheckList, Container, Section } from "@/components/ui";
-import { Reveal, Stagger, StaggerItem } from "@/components/motion";
+import { Motion, MotionGroup } from "@/motion";
 import { SECTION_IDS } from "@/lib/constants";
 import type { BenefitsContent } from "@/types/content";
 
@@ -9,7 +9,7 @@ export function Benefits({ content }: { content: BenefitsContent }) {
   return (
     <Section id={SECTION_IDS.benefits} aria-labelledby="benefits-heading">
       <Container>
-        <Reveal>
+        <Motion>
           <h2 id="benefits-heading" className="text-[26px] leading-tight font-extrabold md:text-[34px]">
             {content.heading.map((line) => (
               <span key={line} className="lg:block">
@@ -18,22 +18,22 @@ export function Benefits({ content }: { content: BenefitsContent }) {
             ))}
           </h2>
           <p className="mt-5 max-w-[760px] text-[17px] leading-7">{content.body}</p>
-        </Reveal>
+        </Motion>
 
-        <Reveal index={1} className="mt-9 grid gap-x-16 gap-y-5 md:grid-cols-2">
+        <Motion index={1} className="mt-9 grid gap-x-16 gap-y-5 md:grid-cols-2">
           <CheckList items={content.bullets.slice(0, half)} className="space-y-5" />
           <CheckList items={content.bullets.slice(half)} className="space-y-5" />
-        </Reveal>
+        </Motion>
 
         <hr className="border-line mt-10 border-t" />
 
-        <Stagger className="mt-8 flex flex-wrap gap-3" stagger={0.07}>
+        <MotionGroup preset="pop" className="mt-8 flex flex-wrap gap-3" gap="tight">
           {content.badges.map((badge) => (
-            <StaggerItem key={badge.label} effect="spring">
+            <span key={badge.label} data-motion-item>
               <Badge>{badge.label}</Badge>
-            </StaggerItem>
+            </span>
           ))}
-        </Stagger>
+        </MotionGroup>
       </Container>
     </Section>
   );

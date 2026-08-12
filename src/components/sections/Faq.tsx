@@ -1,6 +1,6 @@
 import { Minus, Plus } from "lucide-react";
 import { Container, Section } from "@/components/ui";
-import { Stagger, StaggerItem } from "@/components/motion";
+import { MotionGroup } from "@/motion";
 import { SECTION_IDS } from "@/lib/constants";
 import type { FaqContent } from "@/types/content";
 
@@ -31,9 +31,9 @@ export function Faq({ content }: { content: FaqContent }) {
           </h2>
         </div>
 
-        <Stagger className="mt-11 space-y-3" stagger={0.05}>
+        <MotionGroup className="mt-11 space-y-3" gap="tight">
           {content.items.map((item) => (
-            <StaggerItem key={item.question}>
+            <div key={item.question} data-motion-item>
               <details
                 open={item.defaultOpen}
                 className="border-line group hover:border-blue/30 rounded-xl border bg-white px-6 py-5 shadow-[0_1px_2px_rgba(15,42,71,0.04)] transition-colors duration-200"
@@ -47,9 +47,9 @@ export function Faq({ content }: { content: FaqContent }) {
                 </summary>
                 <p className="mt-3.5 max-w-[1000px] text-[15px] leading-[25px]">{item.answer}</p>
               </details>
-            </StaggerItem>
+            </div>
           ))}
-        </Stagger>
+        </MotionGroup>
       </Container>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
