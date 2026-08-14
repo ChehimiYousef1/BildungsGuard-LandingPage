@@ -1,6 +1,6 @@
 import { LandingPage } from "@/components/LandingPage";
 import { getContent } from "@/lib/i18n";
-import { organizationJsonLd } from "@/lib/seo";
+import { jsonLdHtml, organizationJsonLd } from "@/lib/seo";
 
 export default function GermanHomePage() {
   return (
@@ -8,7 +8,7 @@ export default function GermanHomePage() {
       <LandingPage content={getContent("de")} locale="de" />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdHtml(organizationJsonLd()) }}
       />
     </>
   );

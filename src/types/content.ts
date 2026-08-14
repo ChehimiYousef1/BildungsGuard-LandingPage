@@ -71,7 +71,10 @@ export interface Feature {
   description: string;
   bullets: string[];
   frameTitle: string;
+  /** Alt text for the screenshot; also the placeholder caption when `image` is unset. */
   screenshotLabel: string;
+  /** Path under /public to the real product screenshot. */
+  image?: string;
 }
 
 export interface FeatureGroupContent {

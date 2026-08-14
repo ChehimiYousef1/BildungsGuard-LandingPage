@@ -76,7 +76,11 @@ export function FeatureRow({
 
         <div className="w-full lg:w-[564px] lg:shrink-0">
           <div data-feature-frame className="will-change-transform">
-            <ScreenshotFrame title={feature.frameTitle} label={feature.screenshotLabel} />
+            <ScreenshotFrame
+              title={feature.frameTitle}
+              label={feature.screenshotLabel}
+              src={feature.image}
+            />
           </div>
         </div>
       </div>

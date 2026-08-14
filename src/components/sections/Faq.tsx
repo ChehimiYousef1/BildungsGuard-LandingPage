@@ -3,6 +3,7 @@ import { Container, Section } from "@/components/ui";
 import { MotionGroup } from "@/motion";
 import { SECTION_IDS } from "@/lib/constants";
 import type { FaqContent } from "@/types/content";
+import { jsonLdHtml } from "@/lib/seo";
 
 /**
  * Native <details>/<summary>: keyboard accessible and screen-reader correct
@@ -52,7 +53,7 @@ export function Faq({ content }: { content: FaqContent }) {
         </MotionGroup>
       </Container>
 
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdHtml(jsonLd) }} />
     </Section>
   );
 }
