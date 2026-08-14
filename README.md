@@ -57,6 +57,45 @@ Not implemented. `src/lib/validation/demo-request.ts` holds the zod schema and
 `src/lib/api/client.ts` a fetch wrapper — the demo form will POST to a route handler
 in `src/app/api/` when the backend exists.
 
+## Legal pages
+
+`/impressum`, `/datenschutz`, `/agb` and their English counterparts `/en/imprint`,
+`/en/privacy`, `/en/terms`. Content lives in `src/data/legal/de.ts` and `en.ts`,
+typed by `src/types/legal.ts`, rendered by `src/components/legal/LegalPage.tsx`.
+
+**These are drafts.** Every company-specific value is written as a `[placeholder]`.
+A yellow draft banner renders automatically while any placeholder remains and
+disappears once the last one is filled. The text still needs a legal review before
+launch — it is a scaffold, not legal advice.
+
+Legal pages deliberately use their own slim header and footer instead of the
+marketing `Navbar`/`Footer`: those link to `#section` anchors that only exist on the
+landing page.
+
+## Security
+
+`next.config.ts` sets the response headers: CSP, HSTS, `nosniff`,
+`X-Frame-Options: DENY`, `Referrer-Policy`, `Permissions-Policy`, COOP/CORP, and
+`poweredByHeader: false`.
+
+Two things to know before changing anything here:
+
+- **`script-src` allows `'unsafe-inline'`** because the pages are statically
+  prerendered and Next's hydration payload is an inline script. A nonce-based policy
+  needs middleware, which makes every route render per-request.
+- **`headers()` only applies on a Node/serverless target.** On static-CDN hosting the
+  same headers must be configured at the edge instead.
+- **Never load fonts, scripts or images from a third-party origin.** The CSP blocks
+  it, and the DSGVO position of this site depends on it.
+
+JSON-LD is injected through `jsonLdHtml()` in `src/lib/seo.ts`, which escapes `<`.
+Use it rather than `JSON.stringify` directly.
+
+## CI
+
+`.github/workflows/ci.yml` runs `npm ci`, lint, typecheck, build and
+`npm audit --audit-level=high` on every pull request and every push to `main`.
+
 ## Deployment
 
 Vercel or AWS Amplify. Keep SSR/SSG — do **not** set `output: "export"`, it disables
