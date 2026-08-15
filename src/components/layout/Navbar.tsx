@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { Menu, X } from "lucide-react";
-import { ButtonLink, Container } from "@/components/ui";
+import { ButtonLink, Container, Logo } from "@/components/ui";
 import { LanguageSwitch } from "./LanguageSwitch";
 import { Collapse, ScrollProgress } from "@/motion";
 import { useScrolled } from "@/hooks/useScrolled";
@@ -42,15 +41,7 @@ export function Navbar({ links, cta, locale = "de" }: NavbarProps) {
       <ScrollProgress />
       <Container width="narrow" className="relative flex h-[68px] items-center">
         <a href={`#${SECTION_IDS.hero}`} className="shrink-0" aria-label="Bildungs Guard – Startseite">
-          <Image
-            src="/images/logo.png"
-            alt="Bildungs Guard"
-            width={186}
-            height={40}
-            priority
-            className="h-10"
-            style={{ width: "auto" }}
-          />
+          <Logo priority className="h-10" />
         </a>
 
         {/* Centred on the bar itself, so it stays centred regardless of how

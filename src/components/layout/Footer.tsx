@@ -1,5 +1,4 @@
-import Image from "next/image";
-import { Badge, Container } from "@/components/ui";
+import { Badge, Container, Logo } from "@/components/ui";
 import type { FooterContent } from "@/types/content";
 
 interface FooterProps {
@@ -13,14 +12,7 @@ export function Footer({ content }: FooterProps) {
         <div className="grid gap-10 lg:grid-cols-[363px_repeat(4,1fr)]">
           <div>
             <div className="inline-block rounded-xl bg-white px-4 py-2.5">
-              <Image
-                src="/images/logo.png"
-                alt="Bildungs Guard"
-                width={165}
-                height={36}
-                className="h-9"
-                style={{ width: "auto" }}
-              />
+              <Logo className="h-9" />
             </div>
             <p className="text-navy-body mt-5 max-w-[300px] text-sm leading-6">{content.description}</p>
           </div>

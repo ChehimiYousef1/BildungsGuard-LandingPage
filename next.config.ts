@@ -10,20 +10,32 @@ import type { NextConfig } from "next";
  * nonce would force every route to render per-request. External script
  * injection, the usual XSS delivery vector, is still blocked.
  */
+const isDev = process.env.NODE_ENV === "development";
+
+/**
+ * React's development build uses eval() for debugging features — reconstructing
+ * callstacks, hot reload. It never does in production. So 'unsafe-eval' is added
+ * for `next dev` only and can never reach a production response.
+ */
+const scriptSrc = isDev
+  ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
+  : "script-src 'self' 'unsafe-inline'";
+
 const csp = [
   "default-src 'self'",
   "base-uri 'self'",
   "object-src 'none'",
   "frame-ancestors 'none'",
   "form-action 'self'",
-  "script-src 'self' 'unsafe-inline'",
+  scriptSrc,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self'",
-  "connect-src 'self'",
+  isDev ? "connect-src 'self' ws: wss:" : "connect-src 'self'",
   "manifest-src 'self'",
-  "upgrade-insecure-requests",
-].join("; ");
+]
+  .concat(isDev ? [] : ["upgrade-insecure-requests"])
+  .join("; ");
 
 const securityHeaders = [
   { key: "Content-Security-Policy", value: csp },

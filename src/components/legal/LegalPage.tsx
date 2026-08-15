@@ -1,8 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, AlertTriangle } from "lucide-react";
 
-import { Container } from "@/components/ui";
+import { Container, Logo } from "@/components/ui";
 import { LanguageSwitch } from "@/components/layout/LanguageSwitch";
 import { getLegal, pathFor, type Locale } from "@/lib/i18n";
 import type { LegalDocument } from "@/types/legal";
@@ -34,15 +33,7 @@ export function LegalPage({ locale, doc }: LegalPageProps) {
       <header className="border-line border-b bg-white">
         <Container width="faq" className="flex h-[68px] items-center justify-between gap-4">
           <Link href={home} className="shrink-0" aria-label="Bildungs Guard">
-            <Image
-              src="/images/logo.png"
-              alt="Bildungs Guard"
-              width={186}
-              height={40}
-              priority
-              className="h-9"
-              style={{ width: "auto" }}
-            />
+            <Logo priority className="h-9" />
           </Link>
 
           <LanguageSwitch
