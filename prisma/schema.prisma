@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model DemoReservation {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  company   String
+  phone     String?
+  date      String
+  time      String
+  programs  String?
+  message   String?
+  locale    String
+  createdAt DateTime @default(now())
+
+  @@unique([date, time])
+  @@index([date])
+}

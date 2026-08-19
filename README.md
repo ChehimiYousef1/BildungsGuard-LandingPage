@@ -72,6 +72,30 @@ Legal pages deliberately use their own slim header and footer instead of the
 marketing `Navbar`/`Footer`: those link to `#section` anchors that only exist on the
 landing page.
 
+## Demo booking
+
+`POST /api/demo-booking` takes the web demo form, validates it, and sends two emails:
+a branded confirmation to the customer and a lead notification to the internal inbox.
+
+Configure SMTP in `.env.local` — see `.env.example` for the variables. Without them the
+route answers 500 and logs which variables are missing (names only, never values).
+
+Notes on the implementation:
+
+- **Validation runs twice.** `createDemoBookingSchema()` builds the same zod schema for the
+  browser (localised messages) and the server (defaults). The server never trusts the
+  browser's check.
+- **Honeypot** field `website` is off-screen and `tabIndex={-1}`. When filled, the route
+  answers `200 {ok:true}` and sends nothing — a bot must not learn which field caught it.
+- **Rate limit** is 5 requests per IP per 10 minutes, held in process memory. Behind more
+  than one instance this must move to Redis, since each instance keeps its own count.
+- **Reply-To is crossed over**: the customer's copy replies to the company inbox, the
+  internal lead replies to the customer, so the team can just hit Reply.
+- **Emails send independently** via `Promise.allSettled`. If the customer confirmation
+  bounces but the internal lead landed, the request still counts as accepted — the lead is
+  the commercial value.
+- Every visitor-supplied value passes through `escapeHtml()` before entering the HTML body.
+
 ## Security
 
 `next.config.ts` sets the response headers: CSP, HSTS, `nosniff`,

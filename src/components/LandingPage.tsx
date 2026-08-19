@@ -29,7 +29,7 @@ export function LandingPage({ content, locale }: { content: SiteContent; locale:
       <main className="flex-1">
         <Hero content={content.hero} />
         <TrustBar content={content.trust} />
-        <WebDemo content={content.demo} />
+        <WebDemo content={content.demo} locale={locale} />
         <About content={content.about} />
         <FeatureGroup
           id={SECTION_IDS.audit}
@@ -52,7 +52,8 @@ export function LandingPage({ content, locale }: { content: SiteContent; locale:
         <Modules content={content.modules} />
         <WhyUs content={content.why} />
         <Security content={content.security} />
-        <Testimonials content={content.testimonials} />
+        {/* Hidden until real customer quotes replace the placeholders. */}
+        {/* <Testimonials content={content.testimonials} /> */}
         <Insights content={content.insights} />
         <Faq content={content.faq} />
         <CallToAction content={content.cta} />

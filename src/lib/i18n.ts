@@ -17,6 +17,11 @@ export function getContent(locale: Locale): SiteContent {
   return dictionaries[locale];
 }
 
+/** Narrow an untrusted string — a header, a query param — to a Locale. */
+export function isLocale(value: string | null | undefined): value is Locale {
+  return LOCALES.includes(value as Locale);
+}
+
 /** Imprint, privacy policy and terms for one locale. */
 export function getLegal(locale: Locale): LegalContent {
   return legalDictionaries[locale];

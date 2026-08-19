@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "audit:repo": "bash scripts/audit.sh",
+    "verify": "npm run typecheck && npm run lint && npm run build && npm run audit:repo"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

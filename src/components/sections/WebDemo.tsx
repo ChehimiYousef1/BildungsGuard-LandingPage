@@ -1,11 +1,12 @@
-import { Play } from "lucide-react";
+import Image from "next/image";
 import { ButtonLink, Card, Container, Section } from "@/components/ui";
 import { DemoRequestForm } from "@/components/forms/DemoRequestForm";
 import { Motion } from "@/motion";
 import { SECTION_IDS } from "@/lib/constants";
 import type { DemoContent } from "@/types/content";
+import type { Locale } from "@/lib/i18n";
 
-export function WebDemo({ content }: { content: DemoContent }) {
+export function WebDemo({ content, locale }: { content: DemoContent; locale: Locale }) {
   return (
     <Section id={SECTION_IDS.demo} tone="surface" aria-labelledby="demo-heading">
       <Container
@@ -25,10 +26,22 @@ export function WebDemo({ content }: { content: DemoContent }) {
           </h2>
           <p className="mt-5 text-[17px] leading-7">{content.body}</p>
 
-          <Card className="mt-8 flex h-[280px] flex-col items-center justify-center gap-4">
-            <span className="bg-blue flex size-14 items-center justify-center rounded-full shadow-[0_8px_22px_rgba(37,99,235,0.28)]">
-              <Play aria-hidden className="size-5 fill-white text-white" />
-            </span>
+          <Card className="relative mt-8 aspect-video w-full overflow-hidden p-0">
+            <Image
+              src={
+                locale === "de"
+                  ? "/images/videos/webdemo-de.png"
+                  : "/images/videos/webdemo-en.png"
+              }
+              alt={
+                locale === "de"
+                  ? "Bildungs Guard Informationsvideo – bald verfügbar"
+                  : "Bildungs Guard information video – coming soon"
+              }
+              fill
+              sizes="(max-width: 1024px) 100vw, 600px"
+              className="object-contain"
+            />
             <span className="text-muted text-xs">[ {content.videoLabel} ]</span>
           </Card>
 
@@ -51,7 +64,7 @@ export function WebDemo({ content }: { content: DemoContent }) {
         </Motion>
 
         <Motion preset="enterRight" className="w-full lg:w-auto lg:shrink-0">
-          <DemoRequestForm content={content.form} />
+          <DemoRequestForm content={content.form} locale={locale} />
         </Motion>
       </Container>
     </Section>

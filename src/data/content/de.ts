@@ -4,9 +4,9 @@ import { SECTION_IDS } from "@/lib/constants";
 /** Deutsche Fassung — Standardsprache. Sämtliche Seitentexte stehen hier. */
 export const de: SiteContent = {
   meta: {
-    title: "Bildungs Guard – Die zentrale LMS- und Audit-Plattform für Bildungsträger",
+    title: "BildungsGuard – Die zentrale LMS- und Audit-Plattform für Bildungsträger",
     description:
-      "Bildungs Guard verbindet LMS und Auditmanagement in einer Plattform: Kurse, Lerninhalte, " +
+      "BildungsGuard verbindet LMS und Auditmanagement in einer Plattform: Kurse, Lerninhalte, " +
       "Teilnehmende, Lernfortschritte und Nachweise – digital, zentral und prüfsicher.",
   },
 
@@ -23,7 +23,7 @@ export const de: SiteContent = {
     headline: ["Lernen organisieren.", "Fortschritt verfolgen.", "Prüfsicher dokumentiert."],
     subline: "Vom ersten Kurstag bis zum Audit.",
     body:
-      "Bildungs Guard verbindet LMS und Auditmanagement in einer Plattform. Kurse, Lerninhalte, " +
+      "BildungsGuard24 verbindet LMS und Auditmanagement in einer Plattform. Kurse, Lerninhalte, " +
       "Teilnehmende und Lernfortschritte verwalten – und Anwesenheiten, Nachweise und " +
       "Teilnehmerakten bleiben zentral, digital und jederzeit auditbereit.",
     primaryCta: "Webdemo vereinbaren",
@@ -65,12 +65,38 @@ export const de: SiteContent = {
       namePlaceholder: "Vor- und Nachname",
       emailLabel: "Geschäftliche E-Mail",
       emailPlaceholder: "name@einrichtung.de",
+      companyLabel: "Einrichtung",
+      companyPlaceholder: "Name Ihres Bildungsträgers",
+      phoneLabel: "Telefon",
+      phonePlaceholder: "+49 …",
       dateLabel: "Wunschtermin",
       timeLabel: "Uhrzeit",
       timePlaceholder: "Auswählen …",
+      programsLabel: "Parallele Maßnahmen",
+      programsPlaceholder: "Auswählen …",
+      messageLabel: "Ihre Nachricht",
+      messagePlaceholder: "Worauf sollen wir in der Demo besonders eingehen?",
+      privacyLabel: "Ich habe die",
+      privacyLinkLabel: "Datenschutzerklärung",
+      privacyHref: "/datenschutz",
+      optional: "optional",
       submit: "Demo buchen",
+      submitting: "Wird gesendet …",
       note: "Kostenfrei & unverbindlich. Ihre Daten werden ausschließlich auf Servern in Deutschland verarbeitet.",
+      successTitle: "Anfrage eingegangen",
       success: "Vielen Dank. Wir melden uns innerhalb eines Werktags mit einer Bestätigung.",
+      successHint: "Eine Bestätigung ist unterwegs in Ihr Postfach. Den Link zum Online-Meeting erhalten Sie mit der Terminbestätigung.",
+      errorGeneric: "Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es später erneut.",
+      errors: {
+        name: "Bitte geben Sie Ihren Namen an.",
+        email: "Bitte geben Sie eine gültige E-Mail-Adresse an.",
+        company: "Bitte geben Sie Ihre Einrichtung an.",
+        date: "Bitte wählen Sie einen Wunschtermin.",
+        datePast: "Bitte wählen Sie ein Datum in der Zukunft.",
+        time: "Bitte wählen Sie eine Uhrzeit.",
+        privacy: "Bitte stimmen Sie der Datenschutzerklärung zu.",
+        tooLong: "Diese Angabe ist zu lang.",
+      },
     },
   },
 
@@ -173,7 +199,7 @@ export const de: SiteContent = {
   benefits: {
     heading: ["LMS und Auditmanagement –", "an einem Ort."],
     body:
-      "Bildungs Guard verbindet digitales Lernen, Kursverwaltung, Teilnehmerverwaltung und " +
+      "BildungsGuard24 verbindet digitales Lernen, Kursverwaltung, Teilnehmerverwaltung und " +
       "prüfsichere Dokumentation in einer zentralen Plattform.",
     bullets: [
       "Kurse, Maßnahmen und Teilnehmende zentral verwalten",
@@ -267,9 +293,9 @@ export const de: SiteContent = {
 
   why: {
     eyebrow: "Unternehmen",
-    heading: "Warum Bildungs Guard?",
+    heading: "Warum BildungsGuard?",
     body:
-      "Eine Plattform für Lernen, Verwaltung und Qualitätssicherung. Bildungs Guard wurde für " +
+      "Eine Plattform für Lernen, Verwaltung und Qualitätssicherung. BildungsGuard wurde für " +
       "Bildungsträger entwickelt, die Lernprozesse effizient organisieren und zugleich " +
       "Dokumentations- und Nachweispflichten zuverlässig erfüllen wollen.",
     pillars: [
@@ -301,7 +327,7 @@ export const de: SiteContent = {
     eyebrow: "Sicherheit & Compliance",
     heading: "Daten, die bleiben, wo sie hingehören.",
     body:
-      "Bildungsträger arbeiten mit besonders schützenswerten Daten. Bildungs Guard ist darauf " +
+      "Bildungsträger arbeiten mit besonders schützenswerten Daten. BildungsGuard ist darauf " +
       "ausgelegt – technisch und organisatorisch.",
     items: [
       {
@@ -411,9 +437,9 @@ export const de: SiteContent = {
     heading: "Häufige Fragen",
     items: [
       {
-        question: "Was ist Bildungs Guard und für wen ist es gedacht?",
+        question: "Was ist BildungsGuard und für wen ist es gedacht?",
         answer:
-          "Bildungs Guard ist eine zentrale LMS- und Audit-Plattform für Bildungsträger. " +
+          "BildungsGuard ist eine zentrale LMS- und Audit-Plattform für Bildungsträger. " +
           "Verwaltung, Dozenten und Teilnehmende arbeiten in einem System, das Kurse, " +
           "Lerninhalte, Lernfortschritte, Maßnahmen, Teilnehmerakten, Klassenbücher und " +
           "Nachweise digital zusammenführt.",
@@ -424,11 +450,11 @@ export const de: SiteContent = {
         answer:
           "Von der Kurs- und Teilnehmerverwaltung über Lerninhalte, Unterricht, Anwesenheit und " +
           "Lernfortschritt bis hin zu Nachweisen, Dokumentation und Auditvorbereitung lassen " +
-          "sich die zentralen Prozesse in Bildungs Guard abbilden.",
+          "sich die zentralen Prozesse in BildungsGuard abbilden.",
         defaultOpen: true,
       },
       {
-        question: "Wie unterstützt Bildungs Guard das Lernen?",
+        question: "Wie unterstützt BildungsGuard das Lernen?",
         answer:
           "Kurse, Lerninhalte, Teilnehmende und Lernfortschritte lassen sich zentral " +
           "organisieren. Dozenten und Verwaltung erhalten einen gemeinsamen Überblick über den " +
@@ -442,7 +468,7 @@ export const de: SiteContent = {
           "Dokumentation, Nachweise und Exporte sind entlang der AZAV-Praxis aufgebaut.",
       },
       {
-        question: "Eignet sich Bildungs Guard auch für QCG-geförderte Maßnahmen?",
+        question: "Eignet sich BildungsGuard auch für QCG-geförderte Maßnahmen?",
         answer:
           "Ja. Maßnahmen, Förderdaten und Nachweispflichten lassen sich unabhängig vom " +
           "Förderrahmen abbilden.",
@@ -472,7 +498,7 @@ export const de: SiteContent = {
           "und Förderdaten.",
       },
       {
-        question: "Wie hilft Bildungs Guard konkret beim Audit?",
+        question: "Wie hilft BildungsGuard konkret beim Audit?",
         answer:
           "Auditrelevante Teilnehmerdaten, Anwesenheiten, Klassenbücher, Nachweise und " +
           "Dokumentation werden zentral geführt und lassen sich strukturiert für Prüfungen und " +
@@ -491,7 +517,7 @@ export const de: SiteContent = {
   cta: {
     heading: ["Ihre Kurse. Ihr LMS.", "Ihr Audit. Eine Plattform."],
     body:
-      "Erleben Sie Bildungs Guard in einer Webdemo und sehen Sie, wie Lernmanagement und " +
+      "Erleben Sie BildungsGuard in einer Webdemo und sehen Sie, wie Lernmanagement und " +
       "prüfsichere Dokumentation in einem System zusammenspielen.",
     primaryCta: "Webdemo vereinbaren",
     secondaryCta: "Kostenlos testen",
@@ -510,15 +536,14 @@ export const de: SiteContent = {
           { label: "Webdemo & Beratung", href: `#${SECTION_IDS.demo}` },
           { label: "Software", href: `#${SECTION_IDS.audit}` },
           { label: "Funktionen", href: `#${SECTION_IDS.lms}` },
-          { label: "Warum Bildungs Guard", href: `#${SECTION_IDS.why}` },
+          { label: "Warum BildungsGuard", href: `#${SECTION_IDS.why}` },
           { label: "FAQ", href: `#${SECTION_IDS.faq}` },
         ],
       },
       {
         title: "Support",
         links: [
-          { label: "support@bildungsguard.de", href: "mailto:support@bildungsguard.de" },
-          { label: "+49 (0) 30 123 456 78", href: "tel:+493012345678" },
+          { label: "info@bildungsguard.de", href: "mailto:info@bildungsguard.de" },
           { label: "Dokumentation", href: "#" },
           { label: "Problem melden", href: "#" },
         ],
@@ -548,7 +573,7 @@ export const de: SiteContent = {
       { label: "SSL-verschlüsselt" },
       { label: "AZAV-konform" },
     ],
-    copyright: "© 2026 Bildungs Guard GmbH. Alle Rechte vorbehalten.",
+    copyright: "© 2026 BildungsGuard GmbH. Alle Rechte vorbehalten.",
     copyrightRight: "Entwickelt und gehostet in Deutschland.",
   },
 };

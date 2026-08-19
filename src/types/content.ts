@@ -41,19 +41,49 @@ export interface DemoContent {
   question: string;
   options: string[];
   questionCta: string;
-  form: {
-    title: string;
-    subtitle: string;
-    nameLabel: string;
-    namePlaceholder: string;
-    emailLabel: string;
-    emailPlaceholder: string;
-    dateLabel: string;
-    timeLabel: string;
-    timePlaceholder: string;
-    submit: string;
-    note: string;
-    success: string;
+  form: DemoFormContent;
+}
+
+export interface DemoFormContent {
+  title: string;
+  subtitle: string;
+  nameLabel: string;
+  namePlaceholder: string;
+  emailLabel: string;
+  emailPlaceholder: string;
+  companyLabel: string;
+  companyPlaceholder: string;
+  phoneLabel: string;
+  phonePlaceholder: string;
+  dateLabel: string;
+  timeLabel: string;
+  timePlaceholder: string;
+  programsLabel: string;
+  programsPlaceholder: string;
+  messageLabel: string;
+  messagePlaceholder: string;
+  privacyLabel: string;
+  privacyLinkLabel: string;
+  privacyHref: string;
+  optional: string;
+  submit: string;
+  submitting: string;
+  note: string;
+  successTitle: string;
+  success: string;
+  successHint: string;
+  /** Shown when the request itself failed, not a single field. */
+  errorGeneric: string;
+  /** Field-level messages, passed into the zod schema. */
+  errors: {
+    name: string;
+    email: string;
+    company: string;
+    date: string;
+    datePast: string;
+    time: string;
+    privacy: string;
+    tooLong: string;
   };
 }
 

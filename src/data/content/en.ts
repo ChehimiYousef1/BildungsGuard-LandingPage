@@ -5,9 +5,9 @@ import { SECTION_IDS } from "@/lib/constants";
  *  translation fails the build instead of shipping. */
 export const en: SiteContent = {
   meta: {
-    title: "Bildungs Guard – The central LMS and audit platform for training providers",
+    title: "BildungsGuard – The central LMS and audit platform for training providers",
     description:
-      "Bildungs Guard combines LMS and audit management in one platform: courses, learning " +
+      "BildungsGuard24 combines LMS and audit management in one platform: courses, learning " +
       "content, participants, learning progress and evidence – digital, centralized and audit-ready.",
   },
 
@@ -24,34 +24,35 @@ export const en: SiteContent = {
     headline: ["Organize learning.", "Track progress.", "Document with", "audit confidence."],
     subline: "From the first day of training to the audit.",
     body:
-      "Bildungs Guard combines LMS and audit management in one platform. Manage courses, " +
+      "BildungsGuard combines LMS and audit management in one platform. Manage courses, " +
       "learning content, participants and learning progress while keeping attendance, evidence " +
       "and participant records centralized, digital and audit-ready.",
     primaryCta: "Book a web demo",
     secondaryCta: "Try for free",
     note: "free & non-binding – reply within one working day",
     preview: {
-      title: "Bildungs Guard · Overview",
+      title: "BildungsGuard · Overview",
       stats: [
         { label: "Active participants", value: "318", tone: "navy" },
         { label: "Attendance today", value: "94 %", tone: "success" },
-        { label: "Open evidence", value: "2", tone: "blue" },
+        { label: "Open records", value: "2", tone: "blue" },
       ],
       trailTitle: "Audit trail · “Warehouse Specialist 26-B”",
-      steps: ["Record", "Sign", "Archive", "Audit"],
+      steps: ["Capture", "Sign", "Archive", "Audit"],
       footerText: "Class book W29 · digitally signed and archived",
       footerBadge: "audit-ready",
     },
   },
 
   trust: {
-    headline: "Training providers across Germany already work with Bildungs Guard.",
+    headline:
+      "Training providers across Germany already work with BildungsGuard. [PLACEHOLDER: number]",
     badges: [{ label: "GDPR-compliant" }, { label: "Servers in Germany" }, { label: "SSL encrypted" }],
   },
 
   demo: {
     eyebrow: "Web demo & consultation",
-    heading: ["In 20 minutes you know", "whether Bildungs Guard fits", "your organization."],
+    heading: ["In 20 minutes you know", "whether BildungsGuard fits", "your organization."],
     body:
       "The short video gives you an overview of the platform. In the personal web demo we look " +
       "at your courses, your programs and your evidence requirements.",
@@ -61,17 +62,43 @@ export const en: SiteContent = {
     questionCta: "Free & non-binding consultation",
     form: {
       title: "Book a web demo",
-      subtitle: "Choose your preferred date – we confirm within one working day.",
+      subtitle: "Pick your preferred slot – we confirm within one working day.",
       nameLabel: "Your name",
       namePlaceholder: "First and last name",
-      emailLabel: "Business e-mail",
-      emailPlaceholder: "name@organization.de",
+      emailLabel: "Business email",
+      emailPlaceholder: "name@organisation.de",
+      companyLabel: "Organisation",
+      companyPlaceholder: "Name of your education provider",
+      phoneLabel: "Phone",
+      phonePlaceholder: "+49 …",
       dateLabel: "Preferred date",
       timeLabel: "Time",
       timePlaceholder: "Select …",
+      programsLabel: "Parallel programmes",
+      programsPlaceholder: "Select …",
+      messageLabel: "Your message",
+      messagePlaceholder: "What should we focus on during the demo?",
+      privacyLabel: "I have read the",
+      privacyLinkLabel: "privacy policy",
+      privacyHref: "/en/privacy",
+      optional: "optional",
       submit: "Book demo",
-      note: "Free & non-binding. Your data is processed exclusively on servers in Germany.",
-      success: "Thank you. We will confirm your appointment within one working day.",
+      submitting: "Sending …",
+      note: "Free and without obligation. Your data is processed exclusively on servers in Germany.",
+      successTitle: "Request received",
+      success: "Thank you. We will get back to you with a confirmation within one working day.",
+      successHint: "A confirmation is on its way to your inbox. You will receive the meeting link together with the appointment confirmation.",
+      errorGeneric: "Your request could not be sent. Please try again later.",
+      errors: {
+        name: "Please enter your name.",
+        email: "Please enter a valid email address.",
+        company: "Please enter your organisation.",
+        date: "Please choose a preferred date.",
+        datePast: "Please choose a date in the future.",
+        time: "Please choose a time.",
+        privacy: "Please accept the privacy policy.",
+        tooLong: "This entry is too long.",
+      },
     },
   },
 
@@ -83,7 +110,7 @@ export const en: SiteContent = {
       "and paperwork.",
     ],
     body:
-      "That is why Bildungs Guard combines learning management, course organization and " +
+      "That is why BildungsGuard combines learning management, course organization and " +
       "audit-ready documentation in one central platform.",
   },
 
@@ -107,7 +134,7 @@ export const en: SiteContent = {
           "PDF reports for accredited certification bodies",
         ],
         frameTitle: "Dashboard",
-        screenshotLabel: "Bildungs Guard dashboard with course status and learning progress",
+        screenshotLabel: "BildungsGuard dashboard with course status and learning progress",
         image: "/images/screens/dashboard.webp",
       },
       {
@@ -174,7 +201,7 @@ export const en: SiteContent = {
   benefits: {
     heading: ["LMS and audit management", "in one place."],
     body:
-      "Bildungs Guard connects digital learning, course management, participant management and " +
+      "BildungsGuard connects digital learning, course management, participant management and " +
       "audit-ready documentation in one central platform.",
     bullets: [
       "Manage courses, programs and participants centrally",
@@ -226,20 +253,20 @@ export const en: SiteContent = {
       "one by one in the audit.",
     items: [
       {
-        code: "TM",
-        title: "Participants & program management",
+        code: "PP",
+        title: "Participants & Program Management",
         description: "Manage courses, programs, participants, funding data and histories centrally.",
         tone: "blue",
       },
       {
-        code: "KB",
-        title: "Digital class book & attendance",
+        code: "DA",
+        title: "Digital Class Book & Attendance",
         description: "Document teaching, record attendance, sign digitally and archive securely for audits.",
         tone: "blue",
       },
       {
         code: "CL",
-        title: "Courses & learning content",
+        title: "Courses & Learning Content",
         description: "Organize and provide learning modules, materials, assignments and content centrally.",
         tone: "blue",
       },
@@ -251,13 +278,13 @@ export const en: SiteContent = {
         tone: "teal",
       },
       {
-        code: "ND",
-        title: "Evidence & documentation",
+        code: "ED",
+        title: "Evidence & Documentation",
         description: "Manage documents, evidence and revision-safe exports centrally.",
         tone: "teal",
       },
       {
-        code: "AZ",
+        code: "AA",
         title: "Audit & AZAV",
         description:
           "Bring audit-relevant information together in a structured way, aligned with AZAV requirements.",
@@ -268,28 +295,28 @@ export const en: SiteContent = {
 
   why: {
     eyebrow: "Company",
-    heading: "Why Bildungs Guard?",
+    heading: "Why BildungsGuard?",
     body:
-      "One platform for learning, administration and quality assurance. Bildungs Guard was " +
+      "One platform for learning, administration and quality assurance. BildungsGuard was " +
       "developed for training providers that want to organize learning processes efficiently " +
       "while reliably meeting documentation and evidence requirements.",
     pillars: [
       {
-        title: "AZAV expertise",
+        title: "AZAV Expertise",
         description:
           "Our team knows program accreditation, certification bodies and audits first hand. " +
           "Every feature is built along real audit requirements – not on a drawing board.",
         accent: "teal",
       },
       {
-        title: "Personal support",
+        title: "Personal Support",
         description:
           "From onboarding to audit day you have a dedicated contact person. Support by phone " +
           "and e-mail, in German, without ticket queues.",
         accent: "blue",
       },
       {
-        title: "Transparent pricing",
+        title: "Transparent Pricing",
         description:
           "One price based on participant numbers and modules, cancellable monthly, no hidden " +
           "costs. You receive the written offer after the demo.",
@@ -302,7 +329,7 @@ export const en: SiteContent = {
     eyebrow: "Security & compliance",
     heading: "Data that stays where it belongs.",
     body:
-      "Training providers work with highly sensitive data. Bildungs Guard is built for that – " +
+      "Training providers work with highly sensitive data. BildungsGuard is built for that – " +
       "technically and organizationally.",
     items: [
       {
@@ -405,9 +432,9 @@ export const en: SiteContent = {
     heading: "Frequently asked questions",
     items: [
       {
-        question: "What is Bildungs Guard and who is it for?",
+        question: "What is BildungsGuard and who is it for?",
         answer:
-          "Bildungs Guard is a central LMS and audit platform for training providers. " +
+          "BildungsGuard is a central LMS and audit platform for training providers. " +
           "Administrators, instructors and participants work in one system that brings together " +
           "courses, learning content, learning progress, programs, participant records, class " +
           "books and evidence digitally.",
@@ -418,11 +445,11 @@ export const en: SiteContent = {
         answer:
           "From course and participant management to learning content, teaching, attendance and " +
           "learning progress, as well as evidence, documentation and audit preparation, key " +
-          "processes can be managed in Bildungs Guard.",
+          "processes can be managed in BildungsGuard.",
         defaultOpen: true,
       },
       {
-        question: "How does Bildungs Guard support learning?",
+        question: "How does BildungsGuard support learning?",
         answer:
           "Courses, learning content, participants and learning progress can be organized " +
           "centrally. Instructors and administrators gain a shared overview of the learning process.",
@@ -435,7 +462,7 @@ export const en: SiteContent = {
           "and exports are built along AZAV practice.",
       },
       {
-        question: "Is Bildungs Guard also suitable for QCG-funded programs?",
+        question: "Is BildungsGuard also suitable for QCG-funded programmes?",
         answer:
           "Yes. Programs, funding data and evidence requirements can be managed regardless of " +
           "the funding framework.",
@@ -461,7 +488,7 @@ export const en: SiteContent = {
         answer: "Existing lists can be imported from Excel or CSV, including program and funding data.",
       },
       {
-        question: "How does Bildungs Guard specifically help with audits?",
+        question: "How does BildungsGuard specifically help with audits?",
         answer:
           "Audit-relevant participant data, attendance, class books, evidence and documentation " +
           "are managed centrally and can be prepared in a structured way for reviews and reporting.",
@@ -479,7 +506,7 @@ export const en: SiteContent = {
   cta: {
     heading: ["Your training. Your LMS.", "Your audit. One platform."],
     body:
-      "Experience Bildungs Guard in a web demo and see how learning management and audit-ready " +
+      "Experience BildungsGuard in a web demo and see how learning management and audit-ready " +
       "documentation work together in one system.",
     primaryCta: "Book a web demo",
     secondaryCta: "Try for free",
@@ -498,15 +525,14 @@ export const en: SiteContent = {
           { label: "Web demo & consultation", href: `#${SECTION_IDS.demo}` },
           { label: "Software", href: `#${SECTION_IDS.audit}` },
           { label: "Features", href: `#${SECTION_IDS.lms}` },
-          { label: "Why Bildungs Guard", href: `#${SECTION_IDS.why}` },
+          { label: "Why BildungsGuard", href: `#${SECTION_IDS.why}` },
           { label: "FAQ", href: `#${SECTION_IDS.faq}` },
         ],
       },
       {
         title: "Support",
         links: [
-          { label: "support@bildungsguard.de", href: "mailto:support@bildungsguard.de" },
-          { label: "+49 (0) 30 123 456 78", href: "tel:+493012345678" },
+          { label: "info@bildungsguard.de", href: "mailto:info@bildungsguard.de" },
           { label: "Documentation", href: "#" },
           { label: "Report an issue", href: "#" },
         ],
@@ -536,7 +562,7 @@ export const en: SiteContent = {
       { label: "SSL encrypted" },
       { label: "AZAV-compliant" },
     ],
-    copyright: "© 2026 Bildungs Guard GmbH. All rights reserved.",
+    copyright: "© 2026 BildungsGuard GmbH. All rights reserved.",
     copyrightRight: "Developed and hosted in Germany.",
   },
 };
