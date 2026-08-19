@@ -7,7 +7,7 @@ export const en: SiteContent = {
   meta: {
     title: "BildungsGuard – The central LMS and audit platform for training providers",
     description:
-      "BildungsGuard24 combines LMS and audit management in one platform: courses, learning " +
+      "BildungsGuard combines LMS and audit management in one platform: courses, learning " +
       "content, participants, learning progress and evidence – digital, centralized and audit-ready.",
   },
 
@@ -24,7 +24,7 @@ export const en: SiteContent = {
     headline: ["Organize learning.", "Track progress.", "Document with", "audit confidence."],
     subline: "From the first day of training to the audit.",
     body:
-      "BildungsGuard combines LMS and audit management in one platform. Manage courses, " +
+      "BildungsGuard24 combines LMS and audit management in one platform. Manage courses, " +
       "learning content, participants and learning progress while keeping attendance, evidence " +
       "and participant records centralized, digital and audit-ready.",
     primaryCta: "Book a web demo",
