@@ -75,7 +75,7 @@ export async function GET(request: NextRequest) {
     });
 
     const bookedTimes = new Set(
-      reservations.map((reservation) => reservation.time),
+      reservations.map((reservation: { time: string }) => reservation.time),
     );
 
     // Remove booked slots and already-passed slots

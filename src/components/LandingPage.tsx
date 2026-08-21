@@ -10,7 +10,6 @@ import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Modules } from "@/components/sections/Modules";
 import { WhyUs } from "@/components/sections/WhyUs";
 import { Security } from "@/components/sections/Security";
-import { Testimonials } from "@/components/sections/Testimonials";
 import { Insights } from "@/components/sections/Insights";
 import { Faq } from "@/components/sections/Faq";
 import { CallToAction } from "@/components/sections/CallToAction";
