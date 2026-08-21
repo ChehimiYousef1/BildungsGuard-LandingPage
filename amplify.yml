@@ -1,0 +1,21 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        # Installs exactly what package-lock.json pins.
+        - npm ci --cache .npm --prefer-offline
+        # The Prisma client outputs to src/generated/prisma, which is gitignored,
+        # so it does not exist in a fresh clone and must be generated here.
+        - npx prisma generate
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - .next/cache/**/*
+      - .npm/**/*
